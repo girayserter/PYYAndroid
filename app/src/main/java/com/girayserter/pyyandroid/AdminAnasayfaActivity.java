@@ -4,22 +4,17 @@ import androidx.activity.result.ActivityResult;
 import androidx.activity.result.ActivityResultCallback;
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 import android.app.Activity;
-import android.app.Instrumentation;
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Button;
 
+import com.girayserter.pyyandroid.adapters.ProjelerAdapter;
 import com.girayserter.pyyandroid.databinding.ActivityAdminAnasayfaBinding;
-
-import java.util.List;
 
 public class AdminAnasayfaActivity extends AppCompatActivity {
 
@@ -67,6 +62,11 @@ public class AdminAnasayfaActivity extends AppCompatActivity {
 
         btn_projeolustur.setOnClickListener(v -> {
             mStartForResult.launch(new Intent(this,ProjeOlusturActivity.class));
+        });
+
+        btn_personelgrubuolustur.setOnClickListener(v -> {
+            Intent intent =new Intent(this,PersonelGrubuOlusturActivity.class);
+            startActivity(intent);
         });
 
     }

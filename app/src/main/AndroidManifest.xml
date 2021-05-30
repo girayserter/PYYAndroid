@@ -13,7 +13,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.PYYAndroid">
-        <activity android:name=".ProjeOlusturActivity"></activity>
+        <activity android:name=".PersonelGrubuOlusturActivity"></activity>
+        <activity android:name=".ProjeOlusturActivity" />
         <activity android:name=".KullaniciAnasayfaActivity" />
         <activity android:name=".AdminAnasayfaActivity" />
         <activity android:name=".FirstLoginSetPasswordActivity" />

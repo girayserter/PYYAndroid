@@ -1,4 +1,4 @@
-package com.girayserter.pyyandroid;
+package com.girayserter.pyyandroid.models;
 
 public class Proje {
     public int getId() {
@@ -65,12 +65,12 @@ public class Proje {
         this.proje_bitis_tarihi = proje_bitis_tarihi;
     }
 
-    int id;
-    String proje_adi;
-     String proje_tanimi;
-     Double progress;
-     int proje_yoneticisi_id;
-     String gelistirme_modeli;
-     String proje_baslama_tarihi;
-     String proje_bitis_tarihi;
+    public int id;
+    public String proje_adi;
+    public String proje_tanimi;
+    public Double progress;
+    public int proje_yoneticisi_id;
+    public String gelistirme_modeli;
+    public String proje_baslama_tarihi;
+    public String proje_bitis_tarihi;
 }

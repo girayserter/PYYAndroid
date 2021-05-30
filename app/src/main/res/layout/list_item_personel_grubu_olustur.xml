@@ -4,8 +4,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <data>
         <variable
-            name="proje"
-            type="com.girayserter.pyyandroid.models.Proje" />
+            name="personel"
+            type="com.girayserter.pyyandroid.models.Personel" />
     </data>
 
 
@@ -26,33 +26,36 @@
             android:orientation="horizontal"
             android:background="@color/black"
             android:gravity="center">
-
-            <TextView
-                android:id="@+id/proje_id_text"
+            <CheckBox
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@{Integer.toString(proje.id)}"
+                android:id="@+id/chk_personel"/>
+            <TextView
+                android:id="@+id/txt_id"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{Integer.toString(personel.id)}"
                 android:textSize="12dp"
                 android:textColor="@color/white" />
             <TextView
-                android:id="@+id/proje_adi_text"
+                android:id="@+id/txt_isim"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@{proje.proje_adi}"
+                android:text="@{personel.ad}"
                 android:textSize="12dp"
                 android:textColor="@color/white" />
             <TextView
-                android:id="@+id/proje_tanimi_text"
+                android:id="@+id/txt_soyisim"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@{proje.proje_tanimi}"
+                android:text="@{personel.soyad}"
                 android:textSize="12dp"
                 android:textColor="@color/white" />
             <TextView
-                android:id="@+id/ilerleme_seviyesi_text"
+                android:id="@+id/txt_pozisyon"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@{Double.toString(proje.progress)}"
+                android:text="@{personel.pozisyon}"
                 android:textSize="12dp"
                 android:textColor="@color/white" />
 

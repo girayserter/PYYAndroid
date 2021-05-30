@@ -1,4 +1,4 @@
-package com.girayserter.pyyandroid;
+package com.girayserter.pyyandroid.models;
 
 public class Personel {
     public int getId() {
@@ -33,8 +33,8 @@ public class Personel {
         this.pozisyon = pozisyon;
     }
 
-    int id;
-    String ad;
-    String soyad;
-    String pozisyon;
+    public int id;
+    public String ad;
+    public String soyad;
+    public String pozisyon;
 }

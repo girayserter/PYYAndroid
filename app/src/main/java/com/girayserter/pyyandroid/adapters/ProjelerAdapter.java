@@ -1,4 +1,4 @@
-package com.girayserter.pyyandroid;
+package com.girayserter.pyyandroid.adapters;
 
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
@@ -7,7 +7,9 @@ import androidx.annotation.NonNull;
 import androidx.databinding.DataBindingUtil;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.girayserter.pyyandroid.R;
 import com.girayserter.pyyandroid.databinding.ListItemProjectBinding;
+import com.girayserter.pyyandroid.models.Proje;
 
 import java.util.ArrayList;
 import java.util.List;

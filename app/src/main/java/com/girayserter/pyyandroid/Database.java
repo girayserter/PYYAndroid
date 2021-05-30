@@ -1,10 +1,11 @@
 package com.girayserter.pyyandroid;
 
-import android.app.Activity;
 import android.content.Context;
 import android.os.StrictMode;
-import android.view.ViewParent;
 import android.widget.Toast;
+
+import com.girayserter.pyyandroid.models.Personel;
+import com.girayserter.pyyandroid.models.Proje;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -213,6 +214,53 @@ public class Database {
         }
         catch(Exception ex){
             return false;
+        }
+    }
+
+    public int calisanGrubuOlustur(String grupadi, String gruptanimi) {
+        int grupid = 0;
+        try {
+            Connection con = connectionclass();
+            if (con != null) {
+                String query = "insert into calisanGruplari (grup_adi,grup_aciklamasi) values ('" + grupadi + "','" + gruptanimi + "')";
+                PreparedStatement stmt = con.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
+                stmt.executeUpdate();
+                ResultSet rs = stmt.getGeneratedKeys();
+                if (rs.next()) {
+                    grupid = (int) rs.getLong(1);
+                }
+                con.close();
+
+                return grupid;
+
+            } else {
+                Toast.makeText(context,"İnternet Bağlantınızı Kontrol Ediniz",Toast.LENGTH_LONG).show();
+                return grupid;
+            }
+        } catch (Exception ex) {
+            Toast.makeText(context,"hata",Toast.LENGTH_LONG).show();
+            return grupid;
+        }
+    }
+
+    public void grubaPersonelEkle(ArrayList<Integer> secilenler, int grupid) {
+        try{
+            Connection con=connectionclass();
+            if(con!=null) {
+                for(int i=0;i<secilenler.size();i++){
+                    String query="insert into grupAtamalari (grup_id,personel_id) values ("+grupid+","+secilenler.get(i)+")";
+                    Statement stmt=con.createStatement();
+                    stmt.execute(query);
+                }
+                con.close();
+                Toast.makeText(context,"Kaydedildi",Toast.LENGTH_LONG).show();
+            }
+            else{
+                Toast.makeText(context,"İnternet Bağlantınızı Kontrol Ediniz",Toast.LENGTH_LONG).show();
+            }
+        }
+        catch(Exception ex){
+            Toast.makeText(context,"hata",Toast.LENGTH_LONG).show();
         }
     }
 }
