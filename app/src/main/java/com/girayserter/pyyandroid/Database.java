@@ -8,6 +8,7 @@ import android.widget.Toast;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -97,7 +98,7 @@ public class Database {
         }
     }
 
-    public List<Proje> tabloyuAl()
+    public List<Proje> tabloyuAlProjeler()
     {
         List<Proje> projeList = new ArrayList<>();
         try{
@@ -130,5 +131,88 @@ public class Database {
 
         }
         return projeList;
+    }
+
+    public List<Personel> tabloyuAlPersoneller()
+    {
+        List<Personel> personelList = new ArrayList<>();
+        try{
+            Connection con=connectionclass();
+            if(con!=null) {
+                String query="select*from personel";
+                Statement stmt=con.createStatement();
+                ResultSet rs = stmt.executeQuery(query);
+
+                while (rs.next()){
+                    Personel personel=new Personel();
+                    personel.id=rs.getInt("id");
+                    personel.ad=rs.getString("ad");
+                    personel.soyad=rs.getString("soyad");
+                    personel.pozisyon=rs.getString("pozisyon");
+                    personelList.add(personel);
+                }
+                con.close();
+            }
+            else{
+                Toast.makeText(context,"İnternet Bağlantınızı Kontrol Ediniz",Toast.LENGTH_LONG).show();
+            }
+        }
+        catch(Exception ex){
+
+        }
+        return personelList;
+    }
+
+    public boolean yeniProje(String projeadi, String projetanimi, int yoneticiId, String gelistirmeModeli, String baslangicTarihi, String bitisTarihi)
+    {
+        int projeid=0;
+        try{
+            Connection con=connectionclass();
+            if(con!=null) {
+                String query="insert into projeler (proje_adi,proje_tanimi,proje_yoneticisi_id,gelistirme_modeli,proje_baslama_tarihi,proje_bitis_tarihi) values ('"+projeadi+"','"+projetanimi+"',"+yoneticiId+",'"+gelistirmeModeli+"','"+baslangicTarihi+"','"+bitisTarihi+"')";
+                PreparedStatement stmt=con.prepareStatement(query,Statement.RETURN_GENERATED_KEYS);
+                stmt.executeUpdate();
+                ResultSet rs=stmt.getGeneratedKeys();
+                if(rs.next()){
+                    projeid=(int)rs.getLong(1);
+                }
+                con.close();
+                if(projeid!=0){
+                    if(projeyePersonelAta(projeid,yoneticiId,"Yönetici"))
+                        return true;
+                }
+                return true;
+            }
+            else{
+                Toast.makeText(context,"İnternet Bağlantınızı Kontrol Ediniz",Toast.LENGTH_LONG).show();
+                return false;
+            }
+        }
+        catch(Exception ex){
+            Toast.makeText(context,"İnternet Bağlantınızı Kontrol Ediniz",Toast.LENGTH_LONG).show();
+            return false;
+        }
+    }
+
+    public boolean projeyePersonelAta(int projeid,int personelid, String rol)
+    {
+        try{
+            Connection con=connectionclass();
+            if(con!=null) {
+                String query="insert into projeAtamalari(proje_id,personel_id,rol) values ("+projeid+","+personelid+",'"+rol+"')";
+                Statement stmt=con.createStatement();
+                stmt.executeQuery(query);
+                Toast.makeText(context,"Ekleme Başarılı",Toast.LENGTH_LONG).show();
+                con.close();
+                return true;
+            }
+            else{
+                Toast.makeText(context,"İnternet Bağlantınızı Kontrol Ediniz",Toast.LENGTH_LONG).show();
+                return false;
+            }
+        }
+        catch(Exception ex){
+            return false;
+        }
     }
 }
