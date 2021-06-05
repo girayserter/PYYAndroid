@@ -27,7 +27,7 @@ public class ProjeOlusturActivity extends AppCompatActivity {
     Button btn_olustur;
     Database database;
     List<Personel> personelList;
-    private int mYear, mMonth, mDay, mHour, mMinute,mSecond;// Saat ve Tarihe dayalı verilerin tutulduğu değişkenler
+    private int mYear, mMonth, mDay;
 
 
 
@@ -86,7 +86,6 @@ public class ProjeOlusturActivity extends AppCompatActivity {
                 finish();
             }
         });
-
 
         ArrayAdapter adapterInterval=new ArrayAdapter(this, R.layout.spinner_item,intervals);
         adapterInterval.setDropDownViewResource(R.layout.spinner_dropdown_item);

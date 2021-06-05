@@ -69,6 +69,11 @@ public class AdminAnasayfaActivity extends AppCompatActivity {
             startActivity(intent);
         });
 
+        btn_kullanicilar.setOnClickListener(v -> {
+            Intent intent =new Intent(this,KullanicilarActivity.class);
+            startActivity(intent);
+        });
+
     }
 
     private void projelerYenile(){

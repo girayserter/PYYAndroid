@@ -27,10 +27,6 @@ public class PersonellerAdapter extends RecyclerView.Adapter<PersonellerAdapter.
     private ArrayList<Integer> seciliPersoneller=new ArrayList<>();
     Context context;
 
-    interface OnItemCheckListener {
-        void onItemCheck(Personel personel);
-        void onItemUncheck(Personel personel);
-    }
 
     public PersonellerAdapter(Context context) {
         personeller = new ArrayList<>();

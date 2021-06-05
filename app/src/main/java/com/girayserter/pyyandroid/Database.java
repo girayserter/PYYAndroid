@@ -4,6 +4,7 @@ import android.content.Context;
 import android.os.StrictMode;
 import android.widget.Toast;
 
+import com.girayserter.pyyandroid.models.Kullanici;
 import com.girayserter.pyyandroid.models.Personel;
 import com.girayserter.pyyandroid.models.Proje;
 
@@ -254,6 +255,163 @@ public class Database {
                 }
                 con.close();
                 Toast.makeText(context,"Kaydedildi",Toast.LENGTH_LONG).show();
+            }
+            else{
+                Toast.makeText(context,"İnternet Bağlantınızı Kontrol Ediniz",Toast.LENGTH_LONG).show();
+            }
+        }
+        catch(Exception ex){
+            Toast.makeText(context,"hata",Toast.LENGTH_LONG).show();
+        }
+    }
+
+    public List<Kullanici> kullaniciTabloAl() {
+        List<Kullanici> kullaniciList = new ArrayList<>();
+        try{
+            Connection con=connectionclass();
+            if(con!=null) {
+                String query = "select kullanicilar.id,kullanicilar.kullanici_adi,personel.ad,personel.soyad,personel.pozisyon,kullanicilar.yetki from kullanicilar right join personel on kullanicilar.id=personel.id order by id" ;
+                Statement stmt = con.createStatement();
+                ResultSet rs = stmt.executeQuery(query);
+
+                while (rs.next()){
+                    Kullanici kullanici=new Kullanici();
+                    kullanici.id=rs.getInt("id");
+                    kullanici.ad=rs.getString("ad");
+                    kullanici.soyad=rs.getString("soyad");
+                    kullanici.pozisyon=rs.getString("pozisyon");
+                    kullanici.yetki=rs.getString("yetki");;
+                    kullanici.kullanici_adi=rs.getString("kullanici_adi");;
+                    kullaniciList.add(kullanici);
+                }
+                con.close();
+            }
+            else{
+                Toast.makeText(context,"İnternet Bağlantınızı Kontrol Ediniz",Toast.LENGTH_LONG).show();
+            }
+        }
+        catch(Exception ex){
+
+        }
+        return kullaniciList;
+    }
+
+    public void kullaniciKaydet(String kullaniciadi, String yetki)
+    {
+        try{
+            Connection con=connectionclass();
+            if(con!=null) {
+                String query="insert into kullanicilar (kullanici_adi,yetki) values ('"+kullaniciadi+"','"+yetki+"')";
+                Statement stmt=con.createStatement();
+                stmt.executeQuery(query);
+                con.close();
+            }
+            else{
+                Toast.makeText(context,"İnternet Bağlantınızı Kontrol Ediniz",Toast.LENGTH_LONG).show();
+
+            }
+        }
+        catch(Exception ex){
+
+        }
+    }
+    public void personelKaydet(String kullaniciadi,String ad, String soyad,String pozisyon)
+    {
+        try{
+            Connection con=connectionclass();
+            if(con!=null) {
+                String query="insert into personel (id,ad,soyad,pozisyon) values ('"+kullaniciAdindanKullaniciIdAl(kullaniciadi)+"','"+ad+"','"+soyad+"','"+pozisyon+"')";
+                Statement stmt=con.createStatement();
+                stmt.executeQuery(query);
+                con.close();
+                Toast.makeText(context,"Kaydedildi",Toast.LENGTH_LONG).show();
+            }
+            else{
+                Toast.makeText(context,"İnternet Bağlantınızı Kontrol Ediniz",Toast.LENGTH_LONG).show();
+            }
+        }
+        catch(Exception ex){
+
+        }
+    }
+    private int kullaniciAdindanKullaniciIdAl(String kullaniciAdi){
+        int id=0;
+        try{
+            Connection con=connectionclass();
+
+            if(con!=null) {
+                //String query="select * from ihbar";
+                String query="select id from kullanicilar where kullanici_adi='"+kullaniciAdi+"' ";
+                Statement stmt=con.createStatement();
+                ResultSet rs = stmt.executeQuery(query);
+
+                while (rs.next()){
+                    id=rs.getInt("id");
+
+                }
+                con.close();
+            }
+            else{
+                Toast.makeText(context,"İnternet Bağlantınızı Kontrol Ediniz",Toast.LENGTH_LONG).show();
+            }
+        }
+        catch(Exception ex){
+
+        }
+        return id;
+    }
+
+    public void kullaniciGuncelle(int id,String kullaniciadi, String yetki) {
+        try{
+            Connection con=connectionclass();
+            if(con!=null) {
+                String query="update kullanicilar set kullanici_adi='"+kullaniciadi+"',yetki='"+yetki+"' where id="+id+"";
+                Statement stmt=con.createStatement();
+                stmt.execute(query);
+                con.close();
+
+            }
+            else{
+                Toast.makeText(context,"İnternet Bağlantınızı Kontrol Ediniz",Toast.LENGTH_LONG).show();
+            }
+        }
+        catch(Exception ex){
+            Toast.makeText(context,"hata",Toast.LENGTH_LONG).show();
+
+        }
+    }
+
+    public void personelGuncelle(int id, String ad, String soyad, String pozisyon) {
+        try{
+            Connection con=connectionclass();
+            if(con!=null) {
+                String query="update personel set ad='"+ad+"',soyad='"+soyad+"',pozisyon='"+pozisyon+"' where id="+id+"";
+                Statement stmt=con.createStatement();
+                stmt.execute(query);
+                con.close();
+                Toast.makeText(context,"Kaydedildi",Toast.LENGTH_LONG).show();
+
+            }
+            else{
+                Toast.makeText(context,"İnternet Bağlantınızı Kontrol Ediniz",Toast.LENGTH_LONG).show();
+            }
+        }
+        catch(Exception ex){
+            Toast.makeText(context,"hata",Toast.LENGTH_LONG).show();
+        }
+    }
+
+    public void kullaniciSil(int personelid) {
+        try{
+            Connection con=connectionclass();
+            if(con!=null) {
+
+                String query="delete from kullanicilar where id="+personelid+"";
+                Statement stmt=con.createStatement();
+                stmt.execute(query);
+                con.close();
+                Toast.makeText(context,"Personel Silindi",Toast.LENGTH_LONG).show();
+
             }
             else{
                 Toast.makeText(context,"İnternet Bağlantınızı Kontrol Ediniz",Toast.LENGTH_LONG).show();

@@ -61,10 +61,7 @@ public class PersonelGrubuOlusturActivity extends AppCompatActivity {
             }
         });
 
-
         currentSelectedItems = new ArrayList<>();
-
-
 
     }
 
