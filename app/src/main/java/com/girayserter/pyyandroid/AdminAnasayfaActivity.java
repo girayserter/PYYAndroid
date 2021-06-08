@@ -15,8 +15,9 @@ import android.widget.Button;
 
 import com.girayserter.pyyandroid.adapters.ProjelerAdapter;
 import com.girayserter.pyyandroid.databinding.ActivityAdminAnasayfaBinding;
+import com.girayserter.pyyandroid.models.Proje;
 
-public class AdminAnasayfaActivity extends AppCompatActivity {
+public class AdminAnasayfaActivity extends AppCompatActivity implements ProjelerAdapter.ProjelerOnClickInterface {
 
     ActivityAdminAnasayfaBinding binding;
     ProjelerAdapter adapter;
@@ -25,6 +26,7 @@ public class AdminAnasayfaActivity extends AppCompatActivity {
     Button btn_personelgrubuolustur;
     Button btn_kullanicilar;
     Button btn_mesajlar;
+    Proje proje=new Proje();
 
 
     ActivityResultLauncher<Intent> mStartForResult = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(),
@@ -39,8 +41,6 @@ public class AdminAnasayfaActivity extends AppCompatActivity {
             });
 
 
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,7 +50,7 @@ public class AdminAnasayfaActivity extends AppCompatActivity {
 
         binding.rcvProjeler.setHasFixedSize(true);
         binding.rcvProjeler.setLayoutManager(new LinearLayoutManager(this));
-        adapter=new ProjelerAdapter();
+        adapter=new ProjelerAdapter(this,this);
         binding.rcvProjeler.setAdapter(adapter);
 
         projelerYenile();
@@ -79,5 +79,12 @@ public class AdminAnasayfaActivity extends AppCompatActivity {
     private void projelerYenile(){
         adapter.addProjeList(database.tabloyuAlProjeler());
         adapter.notifyDataSetChanged();
+    }
+
+    @Override
+    public void onItemClick(Proje proje) {
+        Intent intent=new Intent(this,ProjeBilgiActivity.class);
+        intent.putExtra("Id",proje.id);
+        startActivity(intent);
     }
 }

@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".ProjeBilgiActivity">
+
+        <TextView
+            android:id="@+id/txt_projeadi"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Proje Adı"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/txt_projedetay"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Detay"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txt_projeadi" />
+
+        <TextView
+            android:id="@+id/txt_ilerlemedurumu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="İlerleme Durumu"
+            app:layout_constraintStart_toEndOf="@+id/txt_projedetay"
+            app:layout_constraintTop_toTopOf="@+id/txt_projedetay" />
+
+        <TextView
+            android:id="@+id/txt_projeyonetici"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Proje Yöneticisi"
+            app:layout_constraintStart_toEndOf="@+id/txt_ilerlemedurumu"
+            app:layout_constraintTop_toTopOf="@+id/txt_projedetay" />
+
+        <TextView
+            android:id="@+id/txt_baslamatarihi"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Başlama Tarihi"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txt_projedetay" />
+
+        <TextView
+            android:id="@+id/txt_bitistarihi"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Bitiş Tarihi"
+            app:layout_constraintStart_toEndOf="@+id/txt_baslamatarihi"
+            app:layout_constraintTop_toBottomOf="@+id/txt_ilerlemedurumu" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:id="@+id/rcv_gorevlisteleri"
+            app:layout_constraintBottom_toTopOf="@+id/btn_yenigorevlistesi"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txt_baslamatarihi" />
+
+        <Button
+            android:id="@+id/btn_projeduzenle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Projeyi Düzenle"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <Button
+            android:id="@+id/btn_yenigorevlistesi"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Yeni Görev Listesi"
+            app:layout_constraintBottom_toTopOf="@+id/btn_projeduzenle"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:visibility="gone"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

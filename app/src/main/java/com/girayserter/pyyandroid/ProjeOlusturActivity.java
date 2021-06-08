@@ -14,6 +14,7 @@ import android.widget.Toast;
 import com.girayserter.pyyandroid.models.Personel;
 
 import java.util.Calendar;
+import java.util.HashMap;
 import java.util.List;
 
 public class ProjeOlusturActivity extends AppCompatActivity {
@@ -28,6 +29,7 @@ public class ProjeOlusturActivity extends AppCompatActivity {
     Database database;
     List<Personel> personelList;
     private int mYear, mMonth, mDay;
+    Bundle bundle;
 
 
 
@@ -40,11 +42,23 @@ public class ProjeOlusturActivity extends AppCompatActivity {
             "Helezonik-Spiral Model",
             "Araştırma Tabanlı Model"};
 
+    HashMap <String,Integer> hashMap=new HashMap<>();
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_proje_olustur);
+        bundle=getIntent().getExtras();
+
+        hashMap.put("Çaglayan (Selale) Modeli",0);
+        hashMap.put("V Modeli",1);
+        hashMap.put("Evrimsel Model",2);
+        hashMap.put("Artirimsal Model",3);
+        hashMap.put("Gelisiguzel Model",4);
+        hashMap.put("Barok Modeli",5);
+        hashMap.put("Helezonik-Spiral Model",6);
+        hashMap.put("Arastirma Tabanli Model",7);
 
         txt_projeadi=findViewById(R.id.txt_projeadi);
         txt_baslangictarihi=findViewById(R.id.txt_baslangictarihi);
@@ -63,27 +77,40 @@ public class ProjeOlusturActivity extends AppCompatActivity {
             btnDatePicker(txt_bitistarihi);
         });
 
+        if(bundle!=null){
+            txt_projeadi.setText(bundle.getString("projeadi"));
+            txt_bitistarihi.setText(bundle.getString("bitistarihi"));
+            txt_baslangictarihi.setText(bundle.getString("baslangictarihi"));
+            txt_projetanimi.setText(bundle.getString("projetanimi"));
+            sp_gelistirmemodeli.setSelection(hashMap.get(bundle.getString("gelistirmemodeli")));
+            sp_projeyoneticisi.setSelection(projeYoneticiIndexBul(bundle.getString("yoneticiisim")));
+        }
+
 
 
         btn_olustur.setOnClickListener(v -> {
-            String projeadi=txt_projeadi.getText().toString();
-            String projetanimi=txt_projetanimi.getText().toString();
-            String gelistirmeModeli=sp_gelistirmemodeli.getSelectedItem().toString();
-            int projeyoneticisiid=personelList.get(sp_projeyoneticisi.getSelectedItemPosition()).id;
-            String projebaslangic=txt_baslangictarihi.getText().toString();
-            String projebitis=txt_bitistarihi.getText().toString();
+            if(bundle!= null){
+                
+            }else{
+                String projeadi=txt_projeadi.getText().toString();
+                String projetanimi=txt_projetanimi.getText().toString();
+                String gelistirmeModeli=sp_gelistirmemodeli.getSelectedItem().toString();
+                int projeyoneticisiid=personelList.get(sp_projeyoneticisi.getSelectedItemPosition()).id;
+                String projebaslangic=txt_baslangictarihi.getText().toString();
+                String projebitis=txt_bitistarihi.getText().toString();
 
-            if(projeadi.equals("")){
-                Toast.makeText(this,"Proje adı boş bırakılamaz",Toast.LENGTH_LONG).show();
-            }else if(projebaslangic.equals(null)){
-                Toast.makeText(this,"Lütfen bir başlangıç tarihi belirleyin",Toast.LENGTH_LONG).show();
-            }else if(projebitis.equals(null)){
-                Toast.makeText(this,"Lütfen bir bitiş tarihi belirleyin",Toast.LENGTH_LONG).show();
-            }
-            else {
-                if(database.yeniProje(projeadi,projetanimi,projeyoneticisiid,gelistirmeModeli,projebaslangic,projebitis));
-                setResult(RESULT_OK);
-                finish();
+                if(projeadi.equals("")){
+                    Toast.makeText(this,"Proje adı boş bırakılamaz",Toast.LENGTH_LONG).show();
+                }else if(projebaslangic.equals(null)){
+                    Toast.makeText(this,"Lütfen bir başlangıç tarihi belirleyin",Toast.LENGTH_LONG).show();
+                }else if(projebitis.equals(null)){
+                    Toast.makeText(this,"Lütfen bir bitiş tarihi belirleyin",Toast.LENGTH_LONG).show();
+                }
+                else {
+                    if(database.yeniProje(projeadi,projetanimi,projeyoneticisiid,gelistirmeModeli,projebaslangic,projebitis));
+                    setResult(RESULT_OK);
+                    finish();
+                }
             }
         });
 
@@ -129,5 +156,14 @@ public class ProjeOlusturActivity extends AppCompatActivity {
                     }
                 }, mYear, mMonth, mDay);
         datePickerDialog.show();
+    }
+
+    private int projeYoneticiIndexBul(String isim){
+        for(int i=0;i<sp_projeyoneticisi.getCount();i++){
+            if(isim.equals(sp_projeyoneticisi.getItemAtPosition(i).toString())){
+                return i;
+            }
+        }
+        return 0;
     }
 }

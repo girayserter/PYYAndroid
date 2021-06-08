@@ -24,7 +24,7 @@ public class PersonelGrubuOlusturActivity extends AppCompatActivity {
     Button btn_olustur;
     EditText txt_grupAdi;
     EditText txt_grupTanimi;
-    private List<Personel> currentSelectedItems;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,7 +35,7 @@ public class PersonelGrubuOlusturActivity extends AppCompatActivity {
 
         binding.rcvPersoneller.setHasFixedSize(true);
         binding.rcvPersoneller.setLayoutManager(new LinearLayoutManager(this));
-        adapter=new PersonellerAdapter(this);
+        adapter=new PersonellerAdapter(this,true);
         binding.rcvPersoneller.setAdapter(adapter);
 
         personellerYenile();
@@ -61,7 +61,7 @@ public class PersonelGrubuOlusturActivity extends AppCompatActivity {
             }
         });
 
-        currentSelectedItems = new ArrayList<>();
+
 
     }
 

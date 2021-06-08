@@ -35,10 +35,6 @@ public class KullanicilarAdapter extends RecyclerView.Adapter<KullanicilarAdapte
     private Kullanici seciliKullanici=new Kullanici();
     private RcvOnClickInterface rcvOnClickInterface;
 
-    interface OnItemCheckListener {
-        void onItemCheck(Personel personel);
-        void onItemUncheck(Personel personel);
-    }
 
     public KullanicilarAdapter(Context context,RcvOnClickInterface rcvOnClickInterface) {
         kullanicilar = new ArrayList<>();
@@ -91,22 +87,6 @@ public class KullanicilarAdapter extends RecyclerView.Adapter<KullanicilarAdapte
     public void onBindViewHolder(final KullanicilarAdapter.MyViewHolder holder, final int position) {
         holder.binding.setKullanici(kullanicilar.get(position));
 
-        /*if (holder instanceof MyViewHolder) {
-            final Personel currentItem = personeller.get(position);
-
-            ((MyViewHolder) holder).binding.se(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    ((MyViewHolder) holder).binding.chkPersonel.setChecked(
-                            !((MyViewHolder) holder).binding.chkPersonel.isChecked());
-                    if (((MyViewHolder) holder).binding.chkPersonel.isChecked()) {
-                        onItemClick.onItemCheck(currentItem);
-                    } else {
-                        onItemClick.onItemUncheck(currentItem);
-                    }
-                }
-            });
-        }*/;
     }
 
 

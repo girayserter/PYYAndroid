@@ -5,26 +5,24 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CompoundButton;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.databinding.DataBindingUtil;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.girayserter.pyyandroid.PersonelGrubuOlusturActivity;
 import com.girayserter.pyyandroid.R;
+import com.girayserter.pyyandroid.databinding.ListItemCalisanGrubuBinding;
 import com.girayserter.pyyandroid.databinding.ListItemPersonelGrubuOlusturBinding;
-import com.girayserter.pyyandroid.databinding.ListItemProjectBinding;
+import com.girayserter.pyyandroid.models.CalisanGrubu;
 import com.girayserter.pyyandroid.models.Kullanici;
 import com.girayserter.pyyandroid.models.Personel;
-import com.girayserter.pyyandroid.models.Proje;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class PersonellerAdapter extends RecyclerView.Adapter<PersonellerAdapter.MyViewHolder> {
+public class CalisanGrubuAdapter extends RecyclerView.Adapter<CalisanGrubuAdapter.MyViewHolder>{
 
-    private List<Personel> personeller;
+    private List<CalisanGrubu> calisanGrubuList;
     private ArrayList<Integer> seciliPersoneller=new ArrayList<>();
     Context context;
     Boolean multiSelect=false;
@@ -33,17 +31,17 @@ public class PersonellerAdapter extends RecyclerView.Adapter<PersonellerAdapter.
     private ArrayList<Integer> selectCheck = new ArrayList<>();
 
 
-    public PersonellerAdapter(Context context) {
-        personeller = new ArrayList<>();
+    public CalisanGrubuAdapter(Context context) {
+        calisanGrubuList = new ArrayList<>();
         this.context=context;
 
-        for (int i = 0; i < personeller.size(); i++) {
+        for (int i = 0; i < calisanGrubuList.size(); i++) {
             selectCheck.add(0);
         }
     }
 
-    public PersonellerAdapter(Context context, Boolean multiSelect) {
-        personeller = new ArrayList<>();
+    public CalisanGrubuAdapter(Context context, Boolean multiSelect) {
+        calisanGrubuList = new ArrayList<>();
         this.context=context;
         this.multiSelect=multiSelect;
         this.rcvOnClickInterface=rcvOnClickInterface;
@@ -53,30 +51,30 @@ public class PersonellerAdapter extends RecyclerView.Adapter<PersonellerAdapter.
         void onItemClick(Kullanici kullanici);
     }
 
-    public void addPersonelList(List<Personel> personelList) {
-        this.personeller = personelList;
-        for (int i = 0; i < personeller.size(); i++) {
+    public void addPersonelList(List<CalisanGrubu> calisanGrubuList) {
+        this.calisanGrubuList = calisanGrubuList;
+        for (int i = 0; i < calisanGrubuList.size(); i++) {
             selectCheck.add(0);
         }
     }
 
     @Override
     public int getItemCount() {
-        return personeller != null ? personeller.size() : 0;
+        return calisanGrubuList != null ? calisanGrubuList.size() : 0;
     }
 
     @NonNull
     @Override
-    public PersonellerAdapter.MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        ListItemPersonelGrubuOlusturBinding binding = DataBindingUtil.inflate(LayoutInflater.from(parent.getContext()), R.layout.list_item_personel_grubu_olustur, parent, false);
-        return new PersonellerAdapter.MyViewHolder(binding);
+    public CalisanGrubuAdapter.MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        ListItemCalisanGrubuBinding binding = DataBindingUtil.inflate(LayoutInflater.from(parent.getContext()), R.layout.list_item_calisan_grubu, parent, false);
+        return new CalisanGrubuAdapter.MyViewHolder(binding);
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
-        private final ListItemPersonelGrubuOlusturBinding binding;
+        private final ListItemCalisanGrubuBinding binding;
 
-        MyViewHolder(ListItemPersonelGrubuOlusturBinding binding) {
+        MyViewHolder(ListItemCalisanGrubuBinding binding) {
             super(binding.getRoot());
             this.binding = binding;
             binding.chkPersonel.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
@@ -100,11 +98,11 @@ public class PersonellerAdapter extends RecyclerView.Adapter<PersonellerAdapter.
     }
 
     @Override
-    public void onBindViewHolder(final PersonellerAdapter.MyViewHolder holder, final int position) {
-        holder.binding.setPersonel(personeller.get(position));
+    public void onBindViewHolder(final CalisanGrubuAdapter.MyViewHolder holder, final int position) {
+        holder.binding.setGrup(calisanGrubuList.get(position));
 
         if (selectCheck.get(position) == 1) {
-            selectedPersonelId=personeller.get(position).id;
+            selectedPersonelId=calisanGrubuList.get(position).id;
             holder.binding.chkPersonel.setChecked(true);
         } else {
             holder.binding.chkPersonel.setChecked(false);
@@ -135,7 +133,7 @@ public class PersonellerAdapter extends RecyclerView.Adapter<PersonellerAdapter.
         return seciliPersoneller;
     }
 
-    public int getSeciliPersonel(){
+    public int getSeciliGrup(){
         return selectedPersonelId;
     }
 }

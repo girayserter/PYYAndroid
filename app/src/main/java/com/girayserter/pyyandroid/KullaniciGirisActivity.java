@@ -15,12 +15,15 @@ public class KullaniciGirisActivity extends AppCompatActivity {
     EditText txt_sifre;
     Button btn_girisyap;
     Database database;
+    SessionManagement session;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_kullanici_giris);
 
         database=new Database(this);
+        session = new SessionManagement(getApplicationContext());
 
         txt_kullaniciadi=findViewById(R.id.txt_kullaniciadi);
         txt_sifre=findViewById(R.id.txt_sifre);
@@ -36,6 +39,7 @@ public class KullaniciGirisActivity extends AppCompatActivity {
                 Toast.makeText(this,"Kullanıcı adı veya şifre yanlış",Toast.LENGTH_LONG).show();
             }
             else{
+                session.createLoginSession(database.kullaniciBilgiAl(kullanici.kullaniciAdi));
                 if(kullanici.sifre.equals("")){
                     Intent intent=new Intent(this,FirstLoginSetPasswordActivity.class);
                     intent.putExtra("kullaniciadi",kullanici.kullaniciAdi);
