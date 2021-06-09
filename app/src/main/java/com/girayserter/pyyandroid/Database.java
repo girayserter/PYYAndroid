@@ -6,7 +6,9 @@ import android.widget.Toast;
 
 import com.girayserter.pyyandroid.databinding.ListItemGorevListesiBinding;
 import com.girayserter.pyyandroid.models.CalisanGrubu;
+import com.girayserter.pyyandroid.models.Gorev;
 import com.girayserter.pyyandroid.models.GorevListe;
+import com.girayserter.pyyandroid.models.GorevidTamamlandi;
 import com.girayserter.pyyandroid.models.Kullanici;
 import com.girayserter.pyyandroid.models.Personel;
 import com.girayserter.pyyandroid.models.Proje;
@@ -693,4 +695,180 @@ public class Database {
 
         }
     }
+
+    public void yeniGorevListesi(String listeadi,int personelid,int projeid, String tarih)
+    {
+        try{
+            String query="";
+            Connection con=connectionclass();
+            if(con!=null) {
+                if(tarih.equals("")){
+                    query="insert into gorev_listesi (projeid,personelid,liste_adi) values ("+projeid+","+personelid+",'"+listeadi+"')";
+                }
+                else{
+                    query="insert into gorev_listesi (projeid,personelid,liste_adi,deadline) values ('"+projeid+"','"+personelid+"','"+listeadi+"','"+tarih+"')";
+                }
+                Statement stmt=con.createStatement();
+                stmt.execute(query);
+                con.close();
+
+            }
+            else{
+                Toast.makeText(context,"İnternet Bağlantınızı Kontrol Ediniz",Toast.LENGTH_LONG).show();
+
+            }
+        }
+        catch(Exception ex){
+            Toast.makeText(context,"Hata",Toast.LENGTH_LONG).show();
+
+        }
+    }
+
+    public void gorevListesiGuncelle(ArrayList<GorevidTamamlandi> al, int gorevListesiId) {
+        try{
+            int bit;
+            int toplam=0;
+            int projeid = 0;
+            float projelerToplamTamamlanma=0;
+            float projelerToplamKatsayi=0;
+            String query;
+            Connection con=connectionclass();
+            if(con!=null) {
+                for(int i=0;i<al.size();i++){
+                    if(al.get(i).tamamlandi==true){
+                        bit=1;
+                    }
+                    else{
+                        bit=0;
+                    }
+                    query="update gorevler set tamamlandi="+bit+" where id="+al.get(i).gorevid+"";
+                    Statement stmt=con.createStatement();
+                    stmt.execute(query);
+                }
+
+                query="select zorluk_derecesi from gorevler where gorevlist_id="+gorevListesiId+" and tamamlandi =1 ";
+                Statement stmt=con.createStatement();
+                ResultSet rs = stmt.executeQuery(query);
+                while (rs.next()){
+                    toplam += rs.getInt("zorluk_derecesi");
+                }
+
+                query="select projeid from gorev_listesi where id="+gorevListesiId+"";
+                stmt=con.createStatement();
+                rs = stmt.executeQuery(query);
+                while (rs.next()){
+                    projeid += rs.getInt("projeid");
+                }
+
+                query="UPDATE gorev_listesi SET tamamlanan_gorev_katsayisi = "+toplam+" ,tamamlanma_yuzdesi=(100* "+toplam+")/toplam_gorev_katsayisi WHERE id = "+gorevListesiId;
+                stmt.execute(query);
+
+                query="select tamamlanan_gorev_katsayisi,toplam_gorev_katsayisi from gorev_listesi where projeid="+projeid+"";
+                rs = stmt.executeQuery(query);
+                while (rs.next()){
+                    projelerToplamTamamlanma += rs.getInt("tamamlanan_gorev_katsayisi");
+                    projelerToplamKatsayi += rs.getInt("toplam_gorev_katsayisi");
+                }
+
+                query="UPDATE projeler SET progress = (100* "+projelerToplamTamamlanma+")/"+projelerToplamKatsayi+" WHERE id = "+projeid;
+                stmt.execute(query);
+
+                con.close();
+                Toast.makeText(context,"Kaydedildi",Toast.LENGTH_LONG).show();
+            }
+            else{
+
+                Toast.makeText(context,"İnternet Bağlantınızı Kontrol Ediniz",Toast.LENGTH_LONG).show();
+            }
+        }
+        catch(Exception ex){
+            Toast.makeText(context,"Hata",Toast.LENGTH_LONG).show();
+
+        }
+    }
+
+    public List<Gorev> gorevListesiDetay(int listeid)
+    {
+        List<Gorev> gorevList = new ArrayList<>();
+        try{
+            Connection con=connectionclass();
+            if(con!=null) {
+                String query = "select*from gorevler where gorevlist_id=" +listeid;
+                Statement stmt=con.createStatement();
+                ResultSet rs = stmt.executeQuery(query);
+
+                while (rs.next()){
+                    Gorev gorev=new Gorev();
+                    gorev.id=rs.getInt("id");
+                    gorev.gorevlist_id=rs.getInt("gorevlist_id");
+                    gorev.gorev_tanimi=rs.getString("gorev_tanimi");
+                    gorev.tamamlandi=rs.getBoolean("tamamlandi");
+                    gorev.zorluk_derecesi=rs.getInt("zorluk_derecesi");
+                    gorevList.add(gorev);
+                }
+                con.close();
+            }
+            else{
+                Toast.makeText(context,"İnternet Bağlantınızı Kontrol Ediniz",Toast.LENGTH_LONG).show();
+            }
+        }
+        catch(Exception ex){
+
+        }
+        return gorevList;
+    }
+
+    public void yeniGorev(int listeid, String gorevtanimi,String zorlukderecesi)
+    {
+        try{
+            String query="";
+            Connection con=connectionclass();
+            if(con!=null) {
+                query="insert into gorevler (gorevlist_id,gorev_tanimi,zorluk_derecesi) values ("+listeid+",'"+gorevtanimi+"',"+Integer.parseInt(zorlukderecesi)+")";
+                Statement stmt=con.createStatement();
+                stmt.execute(query);
+                query="UPDATE gorev_listesi SET toplam_gorev_katsayisi = toplam_gorev_katsayisi + "+Integer.parseInt(zorlukderecesi)+" WHERE id = "+listeid;
+                stmt.execute(query);
+                con.close();
+
+            }
+            else{
+                Toast.makeText(context,"İnternet Bağlantınızı Kontrol Ediniz",Toast.LENGTH_LONG).show();
+
+            }
+        }
+        catch(Exception ex){
+        }
+    }
+
+    public List<Proje> kullaniciPanelProje(int personelid) {
+        List<Proje> projeList = new ArrayList<>();
+        try {
+            Connection con = connectionclass();
+            if (con != null) {
+                String query = "select projeAtamalari.proje_id,projeler.proje_adi,projeler.proje_tanimi,projeler.progress,projeAtamalari.rol from projeAtamalari right join projeler on projeAtamalari.proje_id=projeler.id where personel_id="+personelid;
+                Statement stmt = con.createStatement();
+                ResultSet rs = stmt.executeQuery(query);
+
+                while (rs.next()){
+                    Proje proje=new Proje();
+                    proje.id=rs.getInt("proje_id");
+                    proje.proje_adi=rs.getString("proje_adi");
+                    proje.proje_tanimi=rs.getString("proje_tanimi");
+                    proje.progress=rs.getDouble("progress");
+                    proje.rol=rs.getString("rol");
+                    projeList.add(proje);
+                }
+
+                con.close();
+            } else {
+                Toast.makeText(context,"İnternet Bağlantınızı Kontrol Ediniz",Toast.LENGTH_LONG).show();
+            }
+        } catch (Exception ex) {
+            System.out.println(ex);
+        }
+        return projeList;
+    }
+
+
 }

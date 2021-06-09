@@ -77,6 +77,12 @@ public class ProjeBilgiActivity extends AppCompatActivity implements GorevListes
             mStartForResult.launch(intent);
         });
 
+        binding.btnYenigorevlistesi.setOnClickListener(v -> {
+            Intent intent=new Intent(this,GorevListesiOlusturActivity.class);
+            intent.putExtra("projeid",proje.id);
+            mStartForResult.launch(intent);
+        });
+
     }
 
     private void projeYenile() {
@@ -99,6 +105,12 @@ public class ProjeBilgiActivity extends AppCompatActivity implements GorevListes
 
     @Override
     public void onItemClick(GorevListe gorevListe) {
+        Intent intent= new Intent(this,GorevlerActivity.class);
+        intent.putExtra("listeid",gorevListe.id);
+        intent.putExtra("listeadi",gorevListe.liste_adi);
+        intent.putExtra("personelid",gorevListe.personelid);
+        intent.putExtra("deadline",gorevListe.deadline);
 
+        mStartForResult.launch(intent);
     }
 }

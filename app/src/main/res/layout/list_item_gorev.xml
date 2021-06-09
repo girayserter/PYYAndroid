@@ -4,13 +4,13 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <data>
         <variable
-            name="proje"
-            type="com.girayserter.pyyandroid.models.Proje" />
+            name="gorev"
+            type="com.girayserter.pyyandroid.models.Gorev" />
     </data>
 
 
     <androidx.cardview.widget.CardView
-        android:id="@+id/project_cardview"
+        android:id="@+id/gorev_cardview"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="5dp"
@@ -26,40 +26,37 @@
             android:orientation="horizontal"
             android:background="@color/black"
             android:gravity="center">
-
-            <TextView
-                android:id="@+id/proje_id_text"
+            <CheckBox
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@{Integer.toString(proje.id)}"
+                android:id="@+id/chk_tamamlandi"
+                android:checked="@{gorev.tamamlandi == true ? true : false}"/>
+            <TextView
+                android:id="@+id/txt_id"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{Integer.toString(gorev.id)}"
                 android:textSize="12dp"
                 android:textColor="@color/white" />
             <TextView
-                android:id="@+id/proje_adi_text"
+                android:id="@+id/txt_gorevlistid"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@{proje.proje_adi}"
+                android:text="@{Integer.toString(gorev.gorevlist_id)}"
                 android:textSize="12dp"
                 android:textColor="@color/white" />
             <TextView
-                android:id="@+id/proje_tanimi_text"
+                android:id="@+id/txt_gorevtanimi"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@{proje.proje_tanimi}"
+                android:text="@{gorev.gorev_tanimi}"
                 android:textSize="12dp"
                 android:textColor="@color/white" />
             <TextView
-                android:id="@+id/ilerleme_seviyesi_text"
+                android:id="@+id/txt_zorlukderecesi"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@{Double.toString(proje.progress)}"
-                android:textSize="12dp"
-                android:textColor="@color/white" />
-            <TextView
-                android:id="@+id/txt_rol"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@{proje.rol}"
+                android:text="@{Integer.toString(gorev.zorluk_derecesi)}"
                 android:textSize="12dp"
                 android:textColor="@color/white" />
 

@@ -41,9 +41,9 @@ public class Gorev {
         this.zorluk_derecesi = zorluk_derecesi;
     }
 
-    int id;
-    int gorevlist_id;
-    String gorev_tanimi;
-    Boolean tamamlandi;
-    int zorluk_derecesi;
+    public int id;
+    public int gorevlist_id;
+    public String gorev_tanimi;
+    public Boolean tamamlandi;
+    public int zorluk_derecesi;
 }

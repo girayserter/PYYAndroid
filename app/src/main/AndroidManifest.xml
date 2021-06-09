@@ -13,6 +13,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.PYYAndroid">
+        <activity android:name=".GorevEkleActivity"></activity>
+        <activity android:name=".GorevlerActivity" />
+        <activity android:name=".GorevListesiOlusturActivity" />
         <activity android:name=".PersonelSecActivity" />
         <activity android:name=".ProjeDuzenleActivity" />
         <activity android:name=".ProjeBilgiActivity" />

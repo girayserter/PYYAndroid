@@ -11,10 +11,12 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 
 import com.girayserter.pyyandroid.adapters.ProjelerAdapter;
 import com.girayserter.pyyandroid.databinding.ActivityAdminAnasayfaBinding;
+import com.girayserter.pyyandroid.models.Kullanici;
 import com.girayserter.pyyandroid.models.Proje;
 
 public class AdminAnasayfaActivity extends AppCompatActivity implements ProjelerAdapter.ProjelerOnClickInterface {
@@ -27,6 +29,8 @@ public class AdminAnasayfaActivity extends AppCompatActivity implements Projeler
     Button btn_kullanicilar;
     Button btn_mesajlar;
     Proje proje=new Proje();
+    SessionManagement session;
+    Kullanici kullanici;
 
 
     ActivityResultLauncher<Intent> mStartForResult = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(),
@@ -47,6 +51,8 @@ public class AdminAnasayfaActivity extends AppCompatActivity implements Projeler
         binding = DataBindingUtil.setContentView(this, R.layout.activity_admin_anasayfa);
 
         database=new Database(this);
+        session=new SessionManagement(getApplicationContext());
+        kullanici=session.getUser();
 
         binding.rcvProjeler.setHasFixedSize(true);
         binding.rcvProjeler.setLayoutManager(new LinearLayoutManager(this));
@@ -74,10 +80,25 @@ public class AdminAnasayfaActivity extends AppCompatActivity implements Projeler
             startActivity(intent);
         });
 
+        if(kullanici.yetki.equals("Admin")){
+            binding.btnProfil.setVisibility(View.GONE);
+        }
+        else {
+            binding.btnPersonelgrubuolustur.setVisibility(View.GONE);
+            binding.btnKullanicilar.setVisibility(View.GONE);
+            binding.btnProjeOlustur.setVisibility(View.GONE);
+
+        }
+
     }
 
     private void projelerYenile(){
-        adapter.addProjeList(database.tabloyuAlProjeler());
+        if(kullanici.yetki.equals("Admin")){
+            adapter.addProjeList(database.tabloyuAlProjeler());
+        }
+        else {
+            adapter.addProjeList(database.kullaniciPanelProje(kullanici.id));
+        }
         adapter.notifyDataSetChanged();
     }
 

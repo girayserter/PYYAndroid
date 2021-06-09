@@ -52,8 +52,9 @@ public class KullaniciGirisActivity extends AppCompatActivity {
                         startActivity(intent);
                     }
                     else if(kullanici.yetki.equals("Personel")){
-                        /*KullaniciAnasayfa kullaniciAnasayfa=new KullaniciAnasayfa(kullanici);
-                        kullaniciAnasayfa.setVisible(true);*/
+                        Intent intent=new Intent(this,AdminAnasayfaActivity.class);
+                        intent.putExtra("kullaniciadi",kullanici.kullaniciAdi);
+                        startActivity(intent);
                     }
                 }
             }
