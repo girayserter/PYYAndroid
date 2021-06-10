@@ -30,6 +30,7 @@ public class ProjeBilgiActivity extends AppCompatActivity implements GorevListes
     Proje proje;
     int id=0;
     Bundle bundle;
+    String rol="";
 
     ActivityResultLauncher<Intent> mStartForResult = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(),
             new ActivityResultCallback<ActivityResult>() {
@@ -52,7 +53,11 @@ public class ProjeBilgiActivity extends AppCompatActivity implements GorevListes
         kullanici=session.getUser();
         bundle=getIntent().getExtras();
 
-        if(kullanici.yetki.equals("Yönetici")||kullanici.yetki.equals("Admin")){
+        if(bundle.getString("rol").equals("Yönetici")){
+            rol="Yönetici";
+        }
+
+        if(rol.equals("Yönetici")||kullanici.yetki.equals("Admin")){
             binding.btnYenigorevlistesi.setVisibility(View.VISIBLE);
             binding.btnProjeduzenle.setVisibility(View.VISIBLE);
         }
@@ -94,7 +99,7 @@ public class ProjeBilgiActivity extends AppCompatActivity implements GorevListes
         binding.txtProjeyonetici.setText(database.iddenAdSoyadAl(proje.proje_yoneticisi_id));
         binding.txtIlerlemedurumu.setText(proje.progress.toString());
 
-        if(kullanici.yetki.equals("Yönetici")||kullanici.yetki.equals("Admin")){
+        if(rol.equals("Yönetici")||kullanici.yetki.equals("Admin")){
             adapter.addGorevListeList(database.yoneticiGorevListesi(proje.id));
         }
         else{
@@ -110,6 +115,7 @@ public class ProjeBilgiActivity extends AppCompatActivity implements GorevListes
         intent.putExtra("listeadi",gorevListe.liste_adi);
         intent.putExtra("personelid",gorevListe.personelid);
         intent.putExtra("deadline",gorevListe.deadline);
+        intent.putExtra("rol",rol);
 
         mStartForResult.launch(intent);
     }

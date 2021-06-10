@@ -533,13 +533,13 @@ public class Database {
                 while (rs.next()){
                     GorevListe gorevListe=new GorevListe();
                     gorevListe.id=rs.getInt("id");
-                    gorevListe.projeid=rs.getInt("ad");
-                    gorevListe.personelid=rs.getInt("soyad");
-                    gorevListe.deadline=rs.getString("pozisyon");
-                    gorevListe.liste_adi=rs.getString("yetki");;
-                    gorevListe.toplam_gorev_katsayisi=rs.getInt("kullanici_adi");;
-                    gorevListe.tamamlanan_gorev_katsayisi=rs.getInt("kullanici_adi");;
-                    gorevListe.tamamlanma_yuzdesi=rs.getFloat("kullanici_adi");;
+                    gorevListe.projeid=rs.getInt("projeid");
+                    gorevListe.personelid=rs.getInt("personelid");
+                    gorevListe.deadline=rs.getString("deadline");
+                    gorevListe.liste_adi=rs.getString("liste_adi");;
+                    gorevListe.toplam_gorev_katsayisi=rs.getInt("toplam_gorev_katsayisi");;
+                    gorevListe.tamamlanan_gorev_katsayisi=rs.getInt("tamamlanan_gorev_katsayisi");;
+                    gorevListe.tamamlanma_yuzdesi=rs.getFloat("tamamlanma_yuzdesi");;
                     gorevListeList.add(gorevListe);
                 }
 

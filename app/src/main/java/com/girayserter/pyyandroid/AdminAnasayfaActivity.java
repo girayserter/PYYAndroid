@@ -90,6 +90,11 @@ public class AdminAnasayfaActivity extends AppCompatActivity implements Projeler
 
         }
 
+        binding.btnProfil.setOnClickListener(v -> {
+            Intent intent =new Intent(this,ProfilActivity.class);
+            startActivity(intent);
+        });
+
     }
 
     private void projelerYenile(){
@@ -106,6 +111,9 @@ public class AdminAnasayfaActivity extends AppCompatActivity implements Projeler
     public void onItemClick(Proje proje) {
         Intent intent=new Intent(this,ProjeBilgiActivity.class);
         intent.putExtra("Id",proje.id);
+        if(kullanici.yetki.equals("Personel")){
+            intent.putExtra("rol",proje.rol);
+        }
         startActivity(intent);
     }
 }

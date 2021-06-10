@@ -30,6 +30,7 @@ public class GorevlerActivity extends AppCompatActivity {
     Bundle bundle;
     SessionManagement session;
     Kullanici kullanici;
+    String rol="";
 
     ActivityResultLauncher<Intent> mStartForResult = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(),
             new ActivityResultCallback<ActivityResult>() {
@@ -53,6 +54,8 @@ public class GorevlerActivity extends AppCompatActivity {
         session = new SessionManagement(getApplicationContext());
         kullanici=session.getUser();
 
+        rol=bundle.getString("rol");
+
         binding.rcvGorevler.setHasFixedSize(true);
         binding.rcvGorevler.setLayoutManager(new LinearLayoutManager(this));
         binding.rcvGorevler.setAdapter(adapter);
@@ -63,7 +66,7 @@ public class GorevlerActivity extends AppCompatActivity {
         binding.txtAtananpersonel.setText(database.iddenAdSoyadAl(bundle.getInt("personelid")));
         binding.txtSontarih.setText(bundle.getString("deadline"));
 
-        if(kullanici.yetki.equals("Yönetici")||kullanici.yetki.equals("Admin")){
+        if(rol.equals("Yönetici")||kullanici.yetki.equals("Admin")){
             binding.btnGorevekle.setVisibility(View.VISIBLE);
         }
 

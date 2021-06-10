@@ -14,7 +14,8 @@ public class GorevEkleActivity extends AppCompatActivity {
     Database database;
     Bundle bundle;
 
-    String[] intervals={"1",
+    String[] intervals={
+            "1",
             "2",
             "3",
             "4",
