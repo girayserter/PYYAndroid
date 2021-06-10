@@ -13,7 +13,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.PYYAndroid">
-        <activity android:name=".ProfilActivity"></activity>
+        <activity android:name=".YeniMesajActivity"></activity>
+        <activity android:name=".MesajlarActivity" />
+        <activity android:name=".ProfilActivity" />
         <activity android:name=".GorevEkleActivity" />
         <activity android:name=".GorevlerActivity" />
         <activity android:name=".GorevListesiOlusturActivity" />

@@ -10,6 +10,7 @@ import com.girayserter.pyyandroid.models.Gorev;
 import com.girayserter.pyyandroid.models.GorevListe;
 import com.girayserter.pyyandroid.models.GorevidTamamlandi;
 import com.girayserter.pyyandroid.models.Kullanici;
+import com.girayserter.pyyandroid.models.Mesaj;
 import com.girayserter.pyyandroid.models.Personel;
 import com.girayserter.pyyandroid.models.Proje;
 import com.girayserter.pyyandroid.models.ProjePersonel;
@@ -868,6 +869,136 @@ public class Database {
             System.out.println(ex);
         }
         return projeList;
+    }
+
+    public List<Mesaj> gelenKutusuAl(int personelid) {
+        List<Mesaj> mesajList = new ArrayList<>();
+        try {
+            Connection con = connectionclass();
+            if (con != null) {
+                String query = "select mesajlar.id as mesajid,personel.id as personelid,mesajlar.mesaj_konusu from mesajlar left join personel on mesajlar.gonderen=personel.id where alici=" + personelid ;
+                Statement stmt = con.createStatement();
+                ResultSet rs = stmt.executeQuery(query);
+
+                while (rs.next()){
+                    Mesaj mesaj=new Mesaj();
+                    mesaj.id=rs.getInt("mesajid");
+                    mesaj.gonderen=rs.getInt("personelid");
+                    mesaj.konu=rs.getString("mesaj_konusu");
+                    mesaj.adSoyad=iddenAdSoyadAl(mesaj.gonderen);
+                    mesajList.add(mesaj);
+                }
+
+                con.close();
+            } else {
+                Toast.makeText(context,"İnternet Bağlantınızı Kontrol Ediniz",Toast.LENGTH_LONG).show();
+            }
+        } catch (Exception ex) {
+            System.out.println(ex);
+        }
+        return mesajList;
+    }
+
+    public List<Mesaj> gidenKutusuAl(int personelid) {
+
+        List<Mesaj> mesajList = new ArrayList<>();
+        try {
+            Connection con = connectionclass();
+            if (con != null) {
+                String query = "select mesajlar.id as mesajid,personel.id as personelid,mesajlar.mesaj_konusu from mesajlar left join personel on mesajlar.alici=personel.id where gonderen=" + personelid ;
+                Statement stmt = con.createStatement();
+                ResultSet rs = stmt.executeQuery(query);
+
+                while (rs.next()){
+                    Mesaj mesaj=new Mesaj();
+                    mesaj.id=rs.getInt("mesajid");
+                    mesaj.gonderen=rs.getInt("personelid");
+                    mesaj.konu=rs.getString("mesaj_konusu");
+                    mesaj.adSoyad=iddenAdSoyadAl(mesaj.gonderen);
+                    mesajList.add(mesaj);
+                }
+
+                con.close();
+            } else {
+                Toast.makeText(context,"İnternet Bağlantınızı Kontrol Ediniz",Toast.LENGTH_LONG).show();
+            }
+        } catch (Exception ex) {
+            System.out.println(ex);
+        }
+        return mesajList;
+    }
+
+    public void mesajGonder(int personelid, int aliciid, String mesaj,String konu) {
+        try{
+            Connection con=connectionclass();
+            if(con!=null) {
+                String query="INSERT INTO mesajlar (gonderen,alici,mesaj,mesaj_konusu) values ("+personelid+","+aliciid+",'"+mesaj+"','"+konu+"')";
+                Statement stmt=con.createStatement();
+                stmt.execute(query);
+                con.close();
+                Toast.makeText(context,"Gönderildi",Toast.LENGTH_LONG).show();
+
+            }
+            else{
+                Toast.makeText(context,"İnternet Bağlantınızı Kontrol Ediniz",Toast.LENGTH_LONG).show();
+
+            }
+        }
+        catch(Exception ex){
+            Toast.makeText(context,"Hata",Toast.LENGTH_LONG).show();
+
+        }
+    }
+
+    public Mesaj mesajAl(int mesajid){
+        Mesaj mesaj=new Mesaj();
+        try{
+            Connection con=connectionclass();
+            if(con!=null) {
+                String query="select * from mesajlar where id="+mesajid+"";
+                Statement stmt=con.createStatement();
+                ResultSet rs = stmt.executeQuery(query);
+
+                while (rs.next()){
+                    mesaj.gonderen=rs.getInt("gonderen");
+                    mesaj.alici=rs.getInt("alici");
+                    mesaj.mesaj=rs.getString("mesaj");
+                    mesaj.konu=rs.getString("mesaj_konusu");
+
+                }
+                con.close();
+            }
+            else{
+                Toast.makeText(context,"İnternet Bağlantınızı Kontrol Ediniz",Toast.LENGTH_LONG).show();
+
+            }
+        }
+        catch(Exception ex){
+
+        }
+        return mesaj;
+    }
+
+    public void mesajSil(int mesajid){
+        Boolean bool;
+        try{
+            Connection con=connectionclass();
+            if(con!=null) {
+                String query="delete from mesajlar where id="+mesajid+"";
+                Statement stmt=con.createStatement();
+                bool = stmt.execute(query);
+
+                con.close();
+            }
+            else{
+                Toast.makeText(context,"İnternet Bağlantınızı Kontrol Ediniz",Toast.LENGTH_LONG).show();
+
+            }
+        }
+        catch(Exception ex){
+
+        }
+
     }
 
 

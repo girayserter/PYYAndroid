@@ -95,6 +95,11 @@ public class AdminAnasayfaActivity extends AppCompatActivity implements Projeler
             startActivity(intent);
         });
 
+        binding.btnMesajlar.setOnClickListener(v -> {
+            Intent intent =new Intent(this,MesajlarActivity.class);
+            startActivity(intent);
+        });
+
     }
 
     private void projelerYenile(){
