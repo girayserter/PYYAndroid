@@ -26,7 +26,6 @@
         <activity android:name=".KullanicilarActivity" />
         <activity android:name=".PersonelGrubuOlusturActivity" />
         <activity android:name=".ProjeOlusturActivity" />
-        <activity android:name=".KullaniciAnasayfaActivity" />
         <activity android:name=".AdminAnasayfaActivity" />
         <activity android:name=".FirstLoginSetPasswordActivity" />
         <activity android:name=".KullaniciGirisActivity">

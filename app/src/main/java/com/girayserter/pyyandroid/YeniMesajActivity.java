@@ -54,6 +54,7 @@ public class YeniMesajActivity extends AppCompatActivity {
             binding.txtGonderen.setVisibility(View.GONE);
             binding.btnCevapla.setVisibility(View.GONE);
             binding.btnSil.setVisibility(View.GONE);
+            binding.lblGonderen.setVisibility(View.GONE);
 
             binding.btnGonder.setOnClickListener(v -> {
                 if(binding.txtMesajkonusu.getText().toString().equals("")){
@@ -86,6 +87,7 @@ public class YeniMesajActivity extends AppCompatActivity {
             binding.txtGonderen.setFocusableInTouchMode(false);
             binding.txtGonderen.setEnabled(false);
             binding.txtGonderen.setVisibility(View.GONE);
+            binding.lblGonderen.setVisibility(View.GONE);
 
 
             binding.txtMesajkonusu.setFocusable(false);
@@ -144,6 +146,7 @@ public class YeniMesajActivity extends AppCompatActivity {
             binding.spAlici.setFocusableInTouchMode(false);
             binding.spAlici.setEnabled(false);
             binding.spAlici.setVisibility(View.GONE);
+            binding.lblAlici.setVisibility(View.GONE);
 
             binding.btnGonder.setVisibility(View.GONE);
             if(bundle.getInt("kutu")==2){

@@ -3,54 +3,149 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
-<androidx.constraintlayout.widget.ConstraintLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".ProfilActivity">
 
-    <TextView
-        android:id="@+id/txt_id"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text=""
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".ProfilActivity">
 
-    <TextView
-        android:id="@+id/txt_kullaniciadi"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text=""
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txt_id" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Profil"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toTopOf="@+id/linearLayout16"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
 
-    <TextView
-        android:id="@+id/txt_ad"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text=""
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txt_kullaniciadi" />
+        <LinearLayout
+            android:id="@+id/linearLayout16"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
-    <TextView
-        android:id="@+id/txt_soyad"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text=""
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txt_ad" />
+            <LinearLayout
+                android:id="@+id/linearLayout15"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
 
-    <TextView
-        android:id="@+id/txt_pozisyon"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text=""
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txt_soyad" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+                <TextView
+                    android:id="@+id/txt_idlbl"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Kullanıcı ID: "
+                    android:textSize="16sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/txt_kullaniciadilbl"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Kullanıcı Adı: "
+                    android:textSize="16sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/txt_idlbl" />
+
+                <TextView
+                    android:id="@+id/txt_adlbl"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="İsim: "
+                    android:textSize="16sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/txt_kullaniciadilbl" />
+
+                <TextView
+                    android:id="@+id/txt_soyadlbl"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Soyisim: "
+                    android:textSize="16sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/txt_adlbl" />
+
+                <TextView
+                    android:id="@+id/txt_pozisyonlbl"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Pozisyon: "
+                    android:textSize="16sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/txt_soyadlbl" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/linearLayout14"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/linearLayout15"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <TextView
+                    android:id="@+id/txt_id"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:hint="asdasdfasf"
+                    android:text=""
+                    android:textSize="16sp"
+                    app:layout_constraintStart_toEndOf="@+id/txt_idlbl"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/txt_kullaniciadi"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:hint="asdasdfasf"
+                    android:text=""
+                    android:textSize="16sp"
+                    app:layout_constraintStart_toEndOf="@+id/txt_kullaniciadilbl"
+                    app:layout_constraintTop_toBottomOf="@+id/txt_id" />
+
+                <TextView
+                    android:id="@+id/txt_ad"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:hint="asdasdfasf"
+                    android:text=""
+                    android:textSize="16sp"
+                    app:layout_constraintStart_toEndOf="@+id/txt_adlbl"
+                    app:layout_constraintTop_toBottomOf="@+id/txt_kullaniciadi" />
+
+                <TextView
+                    android:id="@+id/txt_soyad"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:hint="asdasdfasf"
+                    android:text=""
+                    android:textSize="16sp"
+                    app:layout_constraintStart_toEndOf="@+id/txt_soyadlbl"
+                    app:layout_constraintTop_toBottomOf="@+id/txt_ad" />
+
+                <TextView
+                    android:id="@+id/txt_pozisyon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:hint="asdasdfasf"
+                    android:text=""
+                    android:textSize="16sp"
+                    app:layout_constraintStart_toEndOf="@+id/txt_pozisyonlbl"
+                    app:layout_constraintTop_toBottomOf="@+id/txt_soyad" />
+            </LinearLayout>
+        </LinearLayout>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

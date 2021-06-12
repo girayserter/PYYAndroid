@@ -23,12 +23,14 @@ public class GorevListesiAdapter extends RecyclerView.Adapter<GorevListesiAdapte
     private List<GorevListe> gorevListeList;
     private GorevListeOnClickInterface gorevListeOnClickInterface;
     private Context context;
+    private Boolean duzenlemeYetki;
 
 
-    public GorevListesiAdapter(Context context, GorevListeOnClickInterface gorevListeOnClickInterface) {
+    public GorevListesiAdapter(Context context, GorevListeOnClickInterface gorevListeOnClickInterface,Boolean duzenlemeYetki) {
         gorevListeList = new ArrayList<>();
         this.gorevListeOnClickInterface = gorevListeOnClickInterface;
         this.context = context;
+        this.duzenlemeYetki=duzenlemeYetki;
     }
 
     public void addGorevListeList(List<GorevListe> gorevListeList) {
@@ -63,6 +65,9 @@ public class GorevListesiAdapter extends RecyclerView.Adapter<GorevListesiAdapte
                 }
             });
 
+            if(!duzenlemeYetki) {
+                binding.txtSoyisim.setVisibility(View.GONE);
+            }
         }
 
         @Override

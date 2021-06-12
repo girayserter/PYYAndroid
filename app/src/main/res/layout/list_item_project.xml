@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout
+<layout xmlns:tools="http://schemas.android.com/tools"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <data>
@@ -20,50 +20,69 @@
         app:cardCornerRadius="15dp"
         >
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:background="@color/black"
-            android:gravity="center">
 
-            <TextView
-                android:id="@+id/proje_id_text"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@{Integer.toString(proje.id)}"
-                android:textSize="12dp"
-                android:textColor="@color/white" />
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/black"
+            android:paddingRight="10dp"
+            android:paddingLeft="10dp">
+
+
             <TextView
                 android:id="@+id/proje_adi_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@{proje.proje_adi}"
-                android:textSize="12dp"
-                android:textColor="@color/white" />
-            <TextView
-                android:id="@+id/proje_tanimi_text"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@{proje.proje_tanimi}"
-                android:textSize="12dp"
-                android:textColor="@color/white" />
+                android:textColor="@color/white"
+                android:textSize="20sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
             <TextView
                 android:id="@+id/ilerleme_seviyesi_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@{Double.toString(proje.progress)}"
-                android:textSize="12dp"
-                android:textColor="@color/white" />
+                android:text="@{`Tamamlanma: %`+Double.toString(proje.progress)}"
+                android:textColor="@color/white"
+                android:textSize="17sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginRight="10dp"
+                app:layout_constraintEnd_toStartOf="@+id/txt_rol"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/proje_adi_text">
+
+                <TextView
+                    android:id="@+id/proje_tanimi_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:singleLine="false"
+                    android:text="@{proje.proje_tanimi}"
+                    android:textColor="@color/white"
+                    android:textSize="17sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/proje_adi_text" />
+            </LinearLayout>
             <TextView
                 android:id="@+id/txt_rol"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@{proje.rol}"
-                android:textSize="12dp"
-                android:textColor="@color/white" />
+                android:text="@{`Rol: `+(proje.rol==null ? `Atanmamış` : proje.rol)}"
+                android:textColor="@color/white"
+                android:textSize="18sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/ilerleme_seviyesi_text" />
 
 
-        </LinearLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
 </layout>

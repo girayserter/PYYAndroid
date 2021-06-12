@@ -20,43 +20,68 @@
         app:cardCornerRadius="15dp"
         >
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:background="@color/black"
-            android:gravity="center">
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingRight="10dp"
+                android:paddingLeft="10dp"
+                android:paddingTop="5dp"
+                android:paddingBottom="5dp"
+                android:background="@color/black">
 
-            <TextView
-                android:id="@+id/txt_isim"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@{personel.ad}"
-                android:textSize="12dp"
-                android:textColor="@color/white" />
-            <TextView
-                android:id="@+id/txt_soyisim"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@{personel.soyad}"
-                android:textSize="12dp"
-                android:textColor="@color/white" />
-            <TextView
-                android:id="@+id/txt_pozisyon"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@{personel.pozisyon}"
-                android:textSize="12dp"
-                android:textColor="@color/white" />
-            <TextView
-                android:id="@+id/txt_yetki"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@{personel.rol}"
-                android:textSize="12dp"
-                android:textColor="@color/white" />
+                <LinearLayout
+                    android:id="@+id/linearLayout13"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <TextView
+                        android:id="@+id/txt_isim"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@{personel.ad}"
+                        android:textColor="@color/white"
+                        android:textSize="15sp"
+                        />
+
+                    <TextView
+                        android:id="@+id/txt_soyisim"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@{personel.soyad}"
+                        android:textColor="@color/white"
+                        android:textSize="15sp" />
+                </LinearLayout>
 
 
-        </LinearLayout>
+                <TextView
+                    android:id="@+id/txt_pozisyon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@{`Pozisyon: `+personel.pozisyon}"
+                    android:textColor="@color/white"
+                    android:textSize="15sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/linearLayout13" />
+
+                <TextView
+                    android:id="@+id/txt_yetki"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@{`Rol: `+ (personel.rol==null ? `Atanmamış` : personel.rol)}"
+                    android:textColor="@color/white"
+                    android:textSize="15sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/txt_pozisyon" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
     </androidx.cardview.widget.CardView>
 </layout>

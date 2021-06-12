@@ -3,49 +3,70 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
-<androidx.constraintlayout.widget.ConstraintLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".MesajlarActivity">
 
-    <Button
-        android:id="@+id/btn_yenimesaj"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Yeni Mesaj"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
-        android:id="@+id/btn_gelenkutusu"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Gelen Kutusu"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_yenimesaj" />
-
-    <Button
-        android:id="@+id/btn_gonderilmismesajlar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Giden Kutusu"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_gelenkutusu" />
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rcv_mesajlar"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txt_kutuadi" />
+        android:layout_height="match_parent"
+        tools:context=".MesajlarActivity">
 
-    <TextView
-        android:id="@+id/txt_kutuadi"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Gelen Kutusu"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_gonderilmismesajlar" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <LinearLayout
+            android:id="@+id/butonlarLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center"
+
+            app:layout_constraintBottom_toTopOf="@+id/btn_olustur">
+            <Button
+                android:id="@+id/btn_gelenkutusu"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_weight="1"
+                android:text="Gelen Kutusu"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <Button
+                android:id="@+id/btn_gonderilmismesajlar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_weight="1"
+                android:text="Giden Kutusu"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/btn_yenimesaj"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Yeni Mesaj"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rcv_mesajlar"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toTopOf="@+id/btn_yenimesaj"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txt_kutuadi" />
+
+        <TextView
+            android:id="@+id/txt_kutuadi"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Gelen Kutusu"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/butonlarLayout" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

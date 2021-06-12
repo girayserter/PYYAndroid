@@ -31,6 +31,7 @@ public class ProjeBilgiActivity extends AppCompatActivity implements GorevListes
     int id=0;
     Bundle bundle;
     String rol="";
+    Boolean duzenlemeYetki=false;
 
     ActivityResultLauncher<Intent> mStartForResult = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(),
             new ActivityResultCallback<ActivityResult>() {
@@ -53,16 +54,18 @@ public class ProjeBilgiActivity extends AppCompatActivity implements GorevListes
         kullanici=session.getUser();
         bundle=getIntent().getExtras();
 
+        if(bundle.containsKey("rol")){
         if(bundle.getString("rol").equals("Yönetici")){
             rol="Yönetici";
-        }
+        }}
 
         if(rol.equals("Yönetici")||kullanici.yetki.equals("Admin")){
             binding.btnYenigorevlistesi.setVisibility(View.VISIBLE);
             binding.btnProjeduzenle.setVisibility(View.VISIBLE);
+            duzenlemeYetki=true;
         }
 
-        adapter=new GorevListesiAdapter(this,this);
+        adapter=new GorevListesiAdapter(this,this,duzenlemeYetki);
         binding.rcvGorevlisteleri.setHasFixedSize(true);
         binding.rcvGorevlisteleri.setLayoutManager(new LinearLayoutManager(this));
         binding.rcvGorevlisteleri.setAdapter(adapter);

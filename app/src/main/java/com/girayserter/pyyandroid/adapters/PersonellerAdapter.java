@@ -84,9 +84,9 @@ public class PersonellerAdapter extends RecyclerView.Adapter<PersonellerAdapter.
                 public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                     if(multiSelect==true) {
                         if (isChecked) {
-                            seciliPersoneller.add(Integer.parseInt(binding.txtId.getText().toString()));
+                            seciliPersoneller.add(binding.getPersonel().id);
                         } else {
-                            seciliPersoneller.remove(Integer.parseInt(binding.txtId.getText().toString()));
+                            seciliPersoneller.remove(binding.getPersonel().id);
                         }
                     }
                 }

@@ -6,78 +6,127 @@
     android:layout_height="match_parent"
     tools:context=".KullaniciDetayActivity">
 
-    <EditText
-        android:id="@+id/txt_kullaniciadi"
+    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="Kullanıcı Adı"
-        android:inputType="textPersonName"
+        android:text="Kullanıcı"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout17"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintStart_toStartOf="parent" />
 
-    <EditText
-        android:id="@+id/txt_ad"
+    <LinearLayout
+        android:id="@+id/linearLayout17"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="Ad"
-        android:inputType="textPersonName"
+        android:gravity="center"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txt_kullaniciadi" />
+        app:layout_constraintTop_toTopOf="parent">
 
-    <EditText
-        android:id="@+id/txt_soyad"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="Soyad"
-        android:inputType="textPersonName"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txt_ad" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left"
+            android:textSize="17sp"
+            android:text="Kullanıcı Adı:" />
 
-    <EditText
-        android:id="@+id/txt_pozisyon"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="Pozisyon"
-        android:inputType="textPersonName"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txt_soyad" />
+        <EditText
+            android:id="@+id/txt_kullaniciadi"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="15"
 
-    <Button
-        android:id="@+id/btn_kaydet"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Kaydet"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/sp_yetki" />
+            android:inputType="textPersonName"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left"
+            android:textSize="17sp"
+            android:text="Ad:" />
+
+        <EditText
+            android:id="@+id/txt_ad"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="15"
+            android:inputType="textPersonName"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txt_kullaniciadi" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left"
+            android:textSize="17sp"
+            android:text="Soyad:" />
+
+        <EditText
+            android:id="@+id/txt_soyad"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="15"
+
+            android:inputType="textPersonName"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txt_ad" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left"
+            android:textSize="17sp"
+            android:text="Pozisyon:" />
+
+        <EditText
+            android:id="@+id/txt_pozisyon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="15"
+            android:inputType="textPersonName"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txt_soyad" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left"
+            android:textSize="17sp"
+            android:text="Yetki:" />
 
 
+        <Spinner
+            android:id="@+id/sp_yetki"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="15"
+            app:layout_constraintTop_toBottomOf="@+id/txt_pozisyon" />
 
-    <Spinner
-        android:id="@+id/sp_yetki"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@+id/txt_pozisyon"
-        tools:layout_editor_absoluteX="146dp"
-        android:ems="10"/>
+        <Button
+            android:id="@+id/btn_kaydet"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Kaydet"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btn_kaydet" />
+
+    </LinearLayout>
 
     <Button
         android:id="@+id/btn_sil"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Kullanıcıyı Sil"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_kaydet"
-        android:visibility="gone"/>
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
