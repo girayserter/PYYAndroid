@@ -20,6 +20,7 @@
                 android:id="@+id/txt_projeadilbl"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:textColor="?attr/txtColor"
                 android:text="Proje Adı: "
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -29,6 +30,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Proje Adı"
+                android:textColor="?attr/txtColor"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
         </LinearLayout>
@@ -47,6 +49,7 @@
                 android:id="@+id/txt_ilerlemedurumulbl"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:textColor="?attr/txtColor"
                 android:text="İlerleme Durumu: %"
                 app:layout_constraintStart_toEndOf="@+id/txt_projedetay"
                 app:layout_constraintTop_toTopOf="@+id/txt_projedetay" />
@@ -55,6 +58,7 @@
                 android:id="@+id/txt_ilerlemedurumu"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:textColor="?attr/txtColor"
                 android:text="İlerleme Durumu"
                 app:layout_constraintStart_toEndOf="@+id/txt_projedetay"
                 app:layout_constraintTop_toTopOf="@+id/txt_projedetay" />
@@ -74,6 +78,7 @@
                 android:id="@+id/txt_projedetaylbl"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:textColor="?attr/txtColor"
                 android:text="Proje Tanımı: "
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/txt_projeadi" />
@@ -82,6 +87,7 @@
                 android:id="@+id/txt_projedetay"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:textColor="?attr/txtColor"
                 android:text="Detay"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/txt_projeadi" />
@@ -101,6 +107,7 @@
                 android:id="@+id/txt_projeyoneticilbl"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:textColor="?attr/txtColor"
                 android:text="Proje Yöneticisi: "
                 app:layout_constraintStart_toEndOf="@+id/txt_ilerlemedurumu"
                 app:layout_constraintTop_toTopOf="@+id/txt_projedetay" />
@@ -109,6 +116,7 @@
                 android:id="@+id/txt_projeyonetici"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:textColor="?attr/txtColor"
                 android:text="Proje Yöneticisi"
                 app:layout_constraintStart_toEndOf="@+id/txt_ilerlemedurumu"
                 app:layout_constraintTop_toTopOf="@+id/txt_projedetay" />
@@ -128,6 +136,7 @@
                 android:id="@+id/txt_asama"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:textColor="?attr/txtColor"
                 android:text="Aşama: "
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/txt_projedetay" />
@@ -136,6 +145,7 @@
                 android:id="@+id/txt_asamaadi"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:textColor="?attr/txtColor"
                 android:text="Aşama Adı"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/txt_projedetay" />
@@ -154,6 +164,7 @@
             <TextView
                 android:id="@+id/txt_baslamatarihilbl"
                 android:layout_width="wrap_content"
+                android:textColor="?attr/txtColor"
                 android:layout_height="wrap_content"
                 android:text="Proje Başlama Tarihi: "
                 app:layout_constraintStart_toStartOf="parent"
@@ -162,6 +173,7 @@
             <TextView
                 android:id="@+id/txt_baslamatarihi"
                 android:layout_width="wrap_content"
+                android:textColor="?attr/txtColor"
                 android:layout_height="wrap_content"
                 android:text="Başlama Tarihi"
                 app:layout_constraintStart_toStartOf="parent"
@@ -183,6 +195,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Proje Bitiş Tarihi:"
+                android:textColor="?attr/txtColor"
                 app:layout_constraintStart_toEndOf="@+id/txt_baslamatarihi"
                 app:layout_constraintTop_toBottomOf="@+id/txt_ilerlemedurumu" />
 
@@ -191,6 +204,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Bitiş Tarihi"
+                android:textColor="?attr/txtColor"
                 app:layout_constraintStart_toEndOf="@+id/txt_baslamatarihi"
                 app:layout_constraintTop_toBottomOf="@+id/txt_ilerlemedurumu" />
         </LinearLayout>
@@ -201,6 +215,7 @@
             android:layout_height="wrap_content"
             android:text="Görev Listeleri"
             android:textSize="25dp"
+            android:textColor="?attr/txtColor"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/linearLayout8" />
@@ -223,6 +238,8 @@
             android:visibility="gone"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            android:backgroundTint="?attr/buttonBg"
+            android:textColor="?attr/buttonText"
             app:layout_constraintStart_toStartOf="parent" />
 
         <Button
@@ -232,6 +249,8 @@
             android:text="Yeni Görev Listesi"
             app:layout_constraintBottom_toTopOf="@+id/btn_projeduzenle"
             app:layout_constraintEnd_toEndOf="parent"
+            android:backgroundTint="?attr/buttonBg"
+            android:textColor="?attr/buttonText"
             app:layout_constraintStart_toStartOf="parent"
             android:visibility="gone"/>
     </androidx.constraintlayout.widget.ConstraintLayout>

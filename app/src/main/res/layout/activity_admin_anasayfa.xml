@@ -13,6 +13,8 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:text="Proje Oluştur"
+            android:backgroundTint="?attr/buttonBg"
+            android:textColor="?attr/buttonText"
             app:layout_constraintBottom_toTopOf="@+id/btn_personelgrubuolustur"
             app:layout_constraintEnd_toEndOf="@+id/btn_personelgrubuolustur"
             app:layout_constraintHorizontal_bias="1.0"
@@ -24,6 +26,7 @@
             android:layout_height="wrap_content"
             android:text="Projeler"
             android:textSize="25dp"
+            android:textColor="?attr/txtColor"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/btn_mesajlar" />
@@ -43,6 +46,8 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="4dp"
             android:text="Mesajlar"
+            android:backgroundTint="?attr/buttonBg"
+            android:textColor="?attr/buttonText"
             android:layout_marginRight="5dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -53,6 +58,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Kullanıcılar"
+            android:backgroundTint="?attr/buttonBg"
+            android:textColor="?attr/buttonText"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -61,6 +68,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Personel Grubu Oluştur"
+            android:backgroundTint="?attr/buttonBg"
+            android:textColor="?attr/buttonText"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
@@ -71,6 +80,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Profil"
+            android:backgroundTint="?attr/buttonBg"
+            android:textColor="?attr/buttonText"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 

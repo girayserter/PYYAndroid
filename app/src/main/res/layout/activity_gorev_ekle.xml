@@ -14,6 +14,7 @@
             android:layout_height="wrap_content"
             android:text="Görev Ekle"
             android:textSize="22sp"
+            android:textColor="?attr/txtColor"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -24,6 +25,7 @@
             android:layout_height="wrap_content"
             android:text="Görev Detayı:"
             android:textSize="17sp"
+            android:textColor="?attr/txtColor"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView7" />
 
@@ -33,6 +35,7 @@
             android:layout_height="wrap_content"
             android:text="Zorluk Derecesi:"
             android:textSize="17sp"
+            android:textColor="?attr/txtColor"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName2" />
 
@@ -41,6 +44,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Ekle"
+            android:backgroundTint="?attr/buttonBg"
+            android:textColor="?attr/buttonText"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
@@ -49,6 +54,7 @@
             android:id="@+id/sp_zorlukderecesi"
             android:layout_width="match_parent"
             android:layout_height="40dp"
+            android:textColor="?attr/txtColor"
             app:layout_constraintTop_toBottomOf="@+id/textView9" />
 
         <EditText

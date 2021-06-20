@@ -22,6 +22,8 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="Gönder"
+            android:backgroundTint="?attr/buttonBg"
+            android:textColor="?attr/buttonText"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
@@ -31,6 +33,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Cevapla"
+            android:backgroundTint="?attr/buttonBg"
+            android:textColor="?attr/buttonText"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
@@ -40,6 +44,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Sil"
+            android:backgroundTint="?attr/buttonBg"
+            android:textColor="?attr/buttonText"
             android:visibility="gone"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
@@ -51,6 +57,7 @@
             android:layout_weight="1"
             android:gravity="center_vertical"
             android:text="Alıcı: "
+            android:textColor="?attr/txtColor"
             android:textSize="17sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -61,6 +68,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:textSize="17sp"
+            android:textColor="?attr/txtColor"
             android:gravity="center_vertical"
             android:text="Gönderen: "
             android:visibility="@+id/txt_gonderen"
@@ -73,6 +81,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="center_vertical"
+            android:textColor="?attr/txtColor"
             android:text="Konu: "
             android:textSize="17sp"
             app:layout_constraintStart_toStartOf="parent"
@@ -85,6 +94,7 @@
             android:layout_weight="1"
             android:gravity="center_vertical"
             android:text="Mesaj: "
+            android:textColor="?attr/txtColor"
             android:textSize="17sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/txt_mesajkonusu" />
@@ -94,6 +104,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:textColor="?attr/txtColor"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/lbl_alici" />

@@ -9,6 +9,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textColor="?attr/txtColor"
         android:text="Kullanıcı"
         android:textSize="20sp"
         app:layout_constraintBottom_toTopOf="@+id/linearLayout17"
@@ -28,6 +29,7 @@
 
         <TextView
             android:layout_width="wrap_content"
+            android:textColor="?attr/txtColor"
             android:layout_height="wrap_content"
             android:layout_gravity="left"
             android:textSize="17sp"
@@ -38,7 +40,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:ems="15"
-
             android:inputType="textPersonName"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -46,6 +47,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textColor="?attr/txtColor"
             android:layout_gravity="left"
             android:textSize="17sp"
             android:text="Ad:" />
@@ -63,6 +65,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="left"
+            android:textColor="?attr/txtColor"
             android:textSize="17sp"
             android:text="Soyad:" />
 
@@ -71,7 +74,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:ems="15"
-
             android:inputType="textPersonName"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -81,6 +83,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="left"
             android:textSize="17sp"
+            android:textColor="?attr/txtColor"
             android:text="Pozisyon:" />
 
         <EditText
@@ -96,6 +99,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textColor="?attr/txtColor"
             android:layout_gravity="left"
             android:textSize="17sp"
             android:text="Yetki:" />
@@ -105,6 +109,7 @@
             android:id="@+id/sp_yetki"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:textColor="?attr/txtColor"
             android:ems="15"
             app:layout_constraintTop_toBottomOf="@+id/txt_pozisyon" />
 
@@ -113,6 +118,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Kaydet"
+            android:backgroundTint="?attr/buttonBg"
+            android:textColor="?attr/buttonText"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/btn_kaydet" />
@@ -124,6 +131,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Kullanıcıyı Sil"
+        android:backgroundTint="?attr/buttonBg"
+        android:textColor="?attr/buttonText"
         android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

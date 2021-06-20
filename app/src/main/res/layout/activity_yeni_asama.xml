@@ -26,6 +26,7 @@
                 android:layout_weight="1"
                 android:gravity="center_vertical"
                 android:text="Aşama Adı: "
+                android:textColor="?attr/txtColor"
                 tools:layout_editor_absoluteX="23dp"
                 tools:layout_editor_absoluteY="1dp" />
 
@@ -33,6 +34,7 @@
                 android:id="@+id/textView3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:textColor="?attr/txtColor"
                 android:layout_weight="1"
                 android:gravity="center_vertical"
                 android:text="Aşama Başlangıç Tarihi: "
@@ -42,6 +44,7 @@
             <TextView
                 android:id="@+id/textView4"
                 android:layout_width="wrap_content"
+                android:textColor="?attr/txtColor"
                 android:layout_height="41dp"
                 android:layout_weight="1"
                 android:gravity="center_vertical"
@@ -103,6 +106,8 @@
             android:layout_height="wrap_content"
             android:text="Kaydet"
             app:layout_constraintBottom_toBottomOf="parent"
+            android:backgroundTint="?attr/buttonBg"
+            android:textColor="?attr/buttonText"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>

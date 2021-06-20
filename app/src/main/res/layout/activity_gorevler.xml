@@ -20,6 +20,7 @@
                 android:id="@+id/txt_gorevlisteadilbl"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:textColor="?attr/txtColor"
                 android:text="Liste Adı: "
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -27,6 +28,7 @@
                 android:id="@+id/txt_gorevlisteadi"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:textColor="?attr/txtColor"
                 android:text="TextView"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -46,6 +48,7 @@
                 android:id="@+id/txt_atananpersonellbl"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:textColor="?attr/txtColor"
                 android:text="Personel: "
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/txt_gorevlisteadi" />
@@ -53,6 +56,7 @@
             <TextView
                 android:id="@+id/txt_atananpersonel"
                 android:layout_width="wrap_content"
+                android:textColor="?attr/txtColor"
                 android:layout_height="wrap_content"
                 android:text="TextView"
                 app:layout_constraintStart_toStartOf="parent"
@@ -72,6 +76,7 @@
                 android:id="@+id/txt_sontarihlbl"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:textColor="?attr/txtColor"
                 android:text="Deadline: "
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/txt_atananpersonel" />
@@ -79,6 +84,7 @@
             <TextView
                 android:id="@+id/txt_sontarih"
                 android:layout_width="wrap_content"
+                android:textColor="?attr/txtColor"
                 android:layout_height="wrap_content"
                 android:text="TextView"
                 app:layout_constraintStart_toStartOf="parent"
@@ -91,6 +97,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Görevler"
+            android:textColor="?attr/txtColor"
             android:textSize="25dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -112,6 +119,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Kaydet"
+            android:backgroundTint="?attr/buttonBg"
+            android:textColor="?attr/buttonText"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
@@ -121,6 +130,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Görev Ekle"
+            android:backgroundTint="?attr/buttonBg"
+            android:textColor="?attr/buttonText"
             android:visibility="gone"
             app:layout_constraintBottom_toTopOf="@+id/btn_kaydet"
             app:layout_constraintEnd_toEndOf="parent"

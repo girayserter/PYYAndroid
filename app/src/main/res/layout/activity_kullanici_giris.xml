@@ -23,6 +23,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="PROJE YÖNETİM YAZILIMI"
+            android:textColor="?attr/txtColor"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -51,6 +52,8 @@
         <Button
             android:id="@+id/btn_girisyap"
             android:layout_width="wrap_content"
+            android:backgroundTint="?attr/buttonBg"
+            android:textColor="?attr/buttonText"
             android:layout_height="wrap_content"
             android:text="Giriş Yap" />
 

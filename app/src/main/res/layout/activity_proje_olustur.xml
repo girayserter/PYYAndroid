@@ -20,6 +20,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:textColor="?attr/txtColor"
             android:gravity="center_vertical"
             android:text="Proje Adı: "
             tools:layout_editor_absoluteX="23dp"
@@ -31,6 +32,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="center_vertical"
+            android:textColor="?attr/txtColor"
             android:text="Proje Yöneticisi: "
             tools:layout_editor_absoluteX="23dp"
             tools:layout_editor_absoluteY="1dp" />
@@ -41,6 +43,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="center_vertical"
+            android:textColor="?attr/txtColor"
             android:text="Proje Başlangıç Tarihi: "
             tools:layout_editor_absoluteX="23dp"
             tools:layout_editor_absoluteY="1dp" />
@@ -51,6 +54,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="center_vertical"
+            android:textColor="?attr/txtColor"
             android:text="Proje Bitiş Tarihi: "
             tools:layout_editor_absoluteX="23dp"
             tools:layout_editor_absoluteY="1dp" />
@@ -61,6 +65,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="center_vertical"
+            android:textColor="?attr/txtColor"
             android:text="Yazılım Geliştirme Modeli: "
             tools:layout_editor_absoluteX="23dp"
             tools:layout_editor_absoluteY="1dp" />
@@ -70,6 +75,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:textColor="?attr/txtColor"
             android:gravity="center_vertical"
             android:text="Proje Tanımı: "
             tools:layout_editor_absoluteX="23dp"
@@ -99,6 +105,7 @@
         <Spinner
             android:id="@+id/sp_projeyoneticisi"
             android:layout_width="match_parent"
+            android:textColor="?attr/txtColor"
             android:layout_height="wrap_content"
             android:layout_weight="1" />
 
@@ -128,6 +135,7 @@
             android:id="@+id/sp_gelistirmemodeli"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:textColor="?attr/txtColor"
             android:layout_weight="1" />
 
 
@@ -145,6 +153,8 @@
         android:id="@+id/btn_olustur"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:backgroundTint="?attr/buttonBg"
+        android:textColor="?attr/buttonText"
         android:text="Kaydet"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Other color values-->
+    <attr name="cardViewBg" format="reference" />
+    <attr name="cardViewTxt" format="reference" />
+    <attr name="buttonBg" format="reference" />
+    <attr name="buttonText" format="reference" />
+    <attr name="txtColor" format="reference" />
+    <attr name="sttsBarColor" format="reference" />
+</resources>

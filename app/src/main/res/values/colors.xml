@@ -7,4 +7,16 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+
+    <color name="button_light_bg">#FFFFFFFF</color>
+    <color name="button_dark_bg">#1F2B30</color>
+    <color name="button_light_txt">#FFFFFFFF</color>
+    <color name="button_dark_txt">#FFFFFF</color>
+    <color name="item_dark_bg">#292929</color>
+    <color name="item_light_bg">#DFEAE9</color>
+    <color name="item_dark_text">#BCBCBC</color>
+    <color name="item_light_text">#232323</color>
+    <color name="txt_dark_text">#BCBCBC</color>
+    <color name="txt_light_text">#1E1E1E</color>
+    <color name="sttsBarColor">#0b3e57</color>
 </resources>

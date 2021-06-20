@@ -14,6 +14,7 @@
             android:layout_height="wrap_content"
             android:text="Profil"
             android:textSize="20sp"
+            android:textColor="?attr/txtColor"
             app:layout_constraintBottom_toTopOf="@+id/linearLayout16"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
@@ -43,6 +44,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Kullanıcı ID: "
+                    android:textColor="?attr/txtColor"
                     android:textSize="16sp"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
@@ -52,6 +54,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Kullanıcı Adı: "
+                    android:textColor="?attr/txtColor"
                     android:textSize="16sp"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/txt_idlbl" />
@@ -62,6 +65,7 @@
                     android:layout_height="wrap_content"
                     android:text="İsim: "
                     android:textSize="16sp"
+                    android:textColor="?attr/txtColor"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/txt_kullaniciadilbl" />
 
@@ -70,6 +74,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Soyisim: "
+                    android:textColor="?attr/txtColor"
                     android:textSize="16sp"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/txt_adlbl" />
@@ -79,6 +84,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Pozisyon: "
+                    android:textColor="?attr/txtColor"
                     android:textSize="16sp"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/txt_soyadlbl" />
@@ -99,6 +105,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:hint="asdasdfasf"
+                    android:textColor="?attr/txtColor"
                     android:text=""
                     android:textSize="16sp"
                     app:layout_constraintStart_toEndOf="@+id/txt_idlbl"
@@ -109,6 +116,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:hint="asdasdfasf"
+                    android:textColor="?attr/txtColor"
                     android:text=""
                     android:textSize="16sp"
                     app:layout_constraintStart_toEndOf="@+id/txt_kullaniciadilbl"
@@ -120,6 +128,7 @@
                     android:layout_height="wrap_content"
                     android:hint="asdasdfasf"
                     android:text=""
+                    android:textColor="?attr/txtColor"
                     android:textSize="16sp"
                     app:layout_constraintStart_toEndOf="@+id/txt_adlbl"
                     app:layout_constraintTop_toBottomOf="@+id/txt_kullaniciadi" />
@@ -130,6 +139,7 @@
                     android:layout_height="wrap_content"
                     android:hint="asdasdfasf"
                     android:text=""
+                    android:textColor="?attr/txtColor"
                     android:textSize="16sp"
                     app:layout_constraintStart_toEndOf="@+id/txt_soyadlbl"
                     app:layout_constraintTop_toBottomOf="@+id/txt_ad" />
@@ -141,6 +151,7 @@
                     android:hint="asdasdfasf"
                     android:text=""
                     android:textSize="16sp"
+                    android:textColor="?attr/txtColor"
                     app:layout_constraintStart_toEndOf="@+id/txt_pozisyonlbl"
                     app:layout_constraintTop_toBottomOf="@+id/txt_soyad" />
             </LinearLayout>

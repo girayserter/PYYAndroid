@@ -10,7 +10,14 @@
         <item name="colorSecondaryVariant">@color/teal_200</item>
         <item name="colorOnSecondary">@color/black</item>
         <!-- Status bar color. -->
-        <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
-        <!-- Customize your theme here. -->
+        <item name="android:statusBarColor" tools:targetApi="l">?attr/colorOnPrimary</item>
+        <!-- Cardview colors. -->
+        <item name="cardViewBg">@color/item_dark_bg</item>
+        <item name="cardViewTxt">@color/item_dark_text</item>
+        <!--Button colors.-->
+        <item name="buttonBg">@color/button_dark_bg</item>
+        <item name="buttonText">@color/button_dark_txt</item>
+        <!--Textview colors.-->
+        <item name="txtColor">@color/txt_dark_text</item>
     </style>
 </resources>
