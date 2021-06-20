@@ -16,6 +16,7 @@ import android.view.View;
 import com.girayserter.pyyandroid.adapters.GorevListesiAdapter;
 import com.girayserter.pyyandroid.adapters.ProjelerAdapter;
 import com.girayserter.pyyandroid.databinding.ActivityProjeBilgiBinding;
+import com.girayserter.pyyandroid.models.Asama;
 import com.girayserter.pyyandroid.models.GorevListe;
 import com.girayserter.pyyandroid.models.Kullanici;
 import com.girayserter.pyyandroid.models.Proje;
@@ -32,6 +33,7 @@ public class ProjeBilgiActivity extends AppCompatActivity implements GorevListes
     Bundle bundle;
     String rol="";
     Boolean duzenlemeYetki=false;
+    Asama asama;
 
     ActivityResultLauncher<Intent> mStartForResult = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(),
             new ActivityResultCallback<ActivityResult>() {
@@ -70,6 +72,8 @@ public class ProjeBilgiActivity extends AppCompatActivity implements GorevListes
         binding.rcvGorevlisteleri.setLayoutManager(new LinearLayoutManager(this));
         binding.rcvGorevlisteleri.setAdapter(adapter);
 
+        asama=database.asamaAl(bundle.getInt("Id"));
+
         projeYenile();
 
         binding.btnProjeduzenle.setOnClickListener(v -> {
@@ -101,6 +105,7 @@ public class ProjeBilgiActivity extends AppCompatActivity implements GorevListes
         binding.txtBitistarihi.setText(proje.proje_bitis_tarihi);
         binding.txtProjeyonetici.setText(database.iddenAdSoyadAl(proje.proje_yoneticisi_id));
         binding.txtIlerlemedurumu.setText(proje.progress.toString());
+        binding.txtAsamaadi.setText(asama.asamaAdi+" ("+asama.baslangicTarihi+" - "+asama.bitisTarihi+")");
 
         if(rol.equals("Yönetici")||kullanici.yetki.equals("Admin")){
             adapter.addGorevListeList(database.yoneticiGorevListesi(proje.id));

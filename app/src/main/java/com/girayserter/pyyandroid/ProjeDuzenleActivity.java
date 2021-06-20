@@ -134,6 +134,12 @@ public class ProjeDuzenleActivity extends AppCompatActivity implements ProjeCali
                 finish();
             }
         });
+
+        binding.btnAsamalar.setOnClickListener(v -> {
+            Intent intent=new Intent(this,ProjeAsamalariActivity.class);
+            intent.putExtra("projeid",bundle.getInt("projeid"));
+            mStartForResult.launch(intent);
+        });
     }
 
     private String[] personellerAl(){

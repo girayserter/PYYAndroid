@@ -5,6 +5,7 @@ import android.os.StrictMode;
 import android.widget.Toast;
 
 import com.girayserter.pyyandroid.databinding.ListItemGorevListesiBinding;
+import com.girayserter.pyyandroid.models.Asama;
 import com.girayserter.pyyandroid.models.CalisanGrubu;
 import com.girayserter.pyyandroid.models.Gorev;
 import com.girayserter.pyyandroid.models.GorevListe;
@@ -21,8 +22,11 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 public class Database {
 
@@ -175,7 +179,7 @@ public class Database {
         return personelList;
     }
 
-    public boolean yeniProje(String projeadi, String projetanimi, int yoneticiId, String gelistirmeModeli, String baslangicTarihi, String bitisTarihi)
+    public int yeniProje(String projeadi, String projetanimi, int yoneticiId, String gelistirmeModeli, String baslangicTarihi, String bitisTarihi)
     {
         int projeid=0;
         try{
@@ -191,18 +195,18 @@ public class Database {
                 con.close();
                 if(projeid!=0){
                     if(projeyePersonelAta(projeid,yoneticiId,"Yönetici"))
-                        return true;
+                        return projeid;
                 }
-                return true;
+                return projeid;
             }
             else{
                 Toast.makeText(context,"İnternet Bağlantınızı Kontrol Ediniz",Toast.LENGTH_LONG).show();
-                return false;
+                return projeid;
             }
         }
         catch(Exception ex){
             Toast.makeText(context,"İnternet Bağlantınızı Kontrol Ediniz",Toast.LENGTH_LONG).show();
-            return false;
+            return projeid;
         }
     }
 
@@ -1002,4 +1006,106 @@ public class Database {
     }
 
 
+    public List<Asama> asamalarAl(int projeid) {
+        List<Asama> asamaList = new ArrayList<>();
+        try{
+            Connection con=connectionclass();
+            if(con!=null) {
+                String query="select*from projeAsamalari where proje_id="+projeid+" ORDER BY baslangic_tarihi";
+                Statement stmt=con.createStatement();
+                ResultSet rs = stmt.executeQuery(query);
+
+                while (rs.next()){
+                    Asama asama=new Asama();
+                    asama.id=rs.getInt("id");
+                    asama.asamaAdi=rs.getString("asama_adi");
+                    asama.projeId=rs.getInt("proje_id");
+                    asama.baslangicTarihi=rs.getString("baslangic_tarihi");
+                    asama.bitisTarihi=rs.getString("bitis_tarihi");;
+                    asamaList.add(asama);
+                }
+
+                con.close();
+            }
+            else{
+                Toast.makeText(context,"İnternet Bağlantınızı Kontrol Ediniz",Toast.LENGTH_LONG).show();
+            }
+        }
+        catch(Exception ex){
+
+        }
+        return asamaList;
+    }
+
+    public void yeniAsama(int projeid, String asamaAdi,String baslangicTarihi, String bitisTarihi)
+    {
+        try{
+            String query="";
+            Connection con=connectionclass();
+            if(con!=null) {
+                query="insert into projeAsamalari (asama_adi,proje_id,baslangic_tarihi,bitis_tarihi) values ('"+asamaAdi+"',"+projeid+",'"+baslangicTarihi+"','"+bitisTarihi+"')";
+                Statement stmt=con.createStatement();
+                stmt.execute(query);
+                con.close();
+
+            }
+            else{
+                Toast.makeText(context,"İnternet Bağlantınızı Kontrol Ediniz",Toast.LENGTH_LONG).show();
+
+            }
+        }
+        catch(Exception ex){
+        }
+    }
+
+    public void asamaSil(int asamaid) {
+        try{
+            Connection con=connectionclass();
+            if(con!=null) {
+
+                String query="delete from projeAsamalari where id="+asamaid+"";
+                Statement stmt=con.createStatement();
+                stmt.execute(query);
+                con.close();
+                Toast.makeText(context,"Aşama Silindi",Toast.LENGTH_LONG).show();
+
+            }
+            else{
+                Toast.makeText(context,"İnternet Bağlantınızı Kontrol Ediniz",Toast.LENGTH_LONG).show();
+            }
+        }
+        catch(Exception ex){
+            Toast.makeText(context,"hata",Toast.LENGTH_LONG).show();
+        }
+    }
+
+    public Asama asamaAl(int projeid) {
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd", Locale.getDefault());
+        String tarih = sdf.format(new Date());
+        Asama asama=new Asama();
+        try{
+            Connection con=connectionclass();
+            if(con!=null) {
+                String query="select*from projeAsamalari where proje_id="+projeid+" and baslangic_tarihi<='"+tarih+"' and bitis_tarihi>='"+tarih+"' ORDER BY baslangic_tarihi";
+                Statement stmt=con.createStatement();
+                ResultSet rs = stmt.executeQuery(query);
+
+                while (rs.next()){
+                    asama.id=rs.getInt("id");
+                    asama.asamaAdi=rs.getString("asama_adi");
+                    asama.projeId=rs.getInt("proje_id");
+                    asama.baslangicTarihi=rs.getString("baslangic_tarihi");
+                    asama.bitisTarihi=rs.getString("bitis_tarihi");;
+                }
+                con.close();
+            }
+            else{
+                Toast.makeText(context,"İnternet Bağlantınızı Kontrol Ediniz",Toast.LENGTH_LONG).show();
+            }
+        }
+        catch(Exception ex){
+
+        }
+        return asama;
+    }
 }

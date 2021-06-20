@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".YeniAsamaActivity">
+
+
+        <LinearLayout
+            android:id="@+id/linearLayout"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:orientation="vertical"
+
+            app:layout_constraintBottom_toBottomOf="@+id/linearLayout2"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:id="@+id/textView1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center_vertical"
+                android:text="Aşama Adı: "
+                tools:layout_editor_absoluteX="23dp"
+                tools:layout_editor_absoluteY="1dp" />
+
+            <TextView
+                android:id="@+id/textView3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center_vertical"
+                android:text="Aşama Başlangıç Tarihi: "
+                tools:layout_editor_absoluteX="23dp"
+                tools:layout_editor_absoluteY="1dp" />
+
+            <TextView
+                android:id="@+id/textView4"
+                android:layout_width="wrap_content"
+                android:layout_height="41dp"
+                android:layout_weight="1"
+                android:gravity="center_vertical"
+                android:text="Aşama Bitiş Tarihi: "
+                tools:layout_editor_absoluteX="23dp"
+                tools:layout_editor_absoluteY="1dp" />
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/linearLayout2"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="548dp"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toTopOf="@+id/btn_olustur"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/linearLayout"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <EditText
+                android:id="@+id/txt_asamadi"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:ems="10"
+                tools:layout_editor_absoluteX="138dp"
+                tools:layout_editor_absoluteY="14dp" />
+
+            <EditText
+                android:id="@+id/txt_baslangictarihi"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:editable="false"
+                android:ems="10"
+                android:focusable="false"
+                tools:layout_editor_absoluteX="138dp"
+                tools:layout_editor_absoluteY="14dp" />
+
+            <EditText
+                android:id="@+id/txt_bitistarihi"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:editable="false"
+                android:ems="10"
+                android:focusable="false"
+                tools:layout_editor_absoluteX="138dp"
+                tools:layout_editor_absoluteY="14dp" />
+
+
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/btn_olustur"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Kaydet"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
