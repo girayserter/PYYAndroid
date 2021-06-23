@@ -1,0 +1,72 @@
+<layout
+xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:app="http://schemas.android.com/apk/res-auto">
+<data>
+    <import type="android.view.Gravity" />
+    <import type="android.view.View" />
+    <variable
+        name="mesaj"
+        type="com.girayserter.pyyandroid.models.ProjeMesaj" />
+    <variable
+        name="kullanici"
+        type="com.girayserter.pyyandroid.models.Kullanici" />
+</data>
+
+
+<androidx.cardview.widget.CardView
+    android:id="@+id/mesajkutusu_cardview"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:cardBackgroundColor="@android:color/transparent"
+    app:cardElevation="0dp"
+    android:layout_marginBottom="5dp"
+    android:layout_marginLeft="5dp"
+    android:layout_marginRight="5dp"
+    android:layout_marginTop="5dp"
+    >
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:background="@color/transparent"
+        android:gravity="@{mesaj.personelId == kullanici.id ? Gravity.RIGHT : Gravity.LEFT}">
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@{mesaj.personelId == kullanici.id ? @drawable/card_background2 : @drawable/card_background}"
+            android:paddingLeft="15dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginLeft="5dp"
+            android:paddingTop="5dp"
+            android:paddingRight="15dp"
+            android:paddingBottom="5dp"
+            >
+            <TextView
+                android:id="@+id/textView12"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{mesaj.personelAdi}"
+                android:textSize="17sp"
+                android:textColor="@color/purple_200"
+                android:visibility="@{mesaj.personelId==kullanici.id ? View.GONE : View.VISIBLE}"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+            <TextView
+                android:id="@+id/textView10"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{mesaj.mesaj}"
+                android:textSize="17sp"
+                android:textColor="@color/white"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+
+
+        </LinearLayout>
+    </LinearLayout>
+
+
+</androidx.cardview.widget.CardView>
+</layout>

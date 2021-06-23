@@ -14,6 +14,7 @@ import com.girayserter.pyyandroid.models.Kullanici;
 import com.girayserter.pyyandroid.models.Mesaj;
 import com.girayserter.pyyandroid.models.Personel;
 import com.girayserter.pyyandroid.models.Proje;
+import com.girayserter.pyyandroid.models.ProjeMesaj;
 import com.girayserter.pyyandroid.models.ProjePersonel;
 
 import java.sql.Connection;
@@ -1107,5 +1108,57 @@ public class Database {
 
         }
         return asama;
+    }
+
+    public List<ProjeMesaj> projeMesajlarAl(int projeid) {
+        List<ProjeMesaj> projeMesajList = new ArrayList<>();
+        try{
+            Connection con=connectionclass();
+            if(con!=null) {
+                String query="select*from projeMesajlar where proje_id="+projeid+" ORDER BY id";
+                Statement stmt=con.createStatement();
+                ResultSet rs = stmt.executeQuery(query);
+
+                while (rs.next()){
+                    ProjeMesaj mesaj=new ProjeMesaj();
+                    mesaj.id=rs.getInt("id");
+                    mesaj.projeId=rs.getInt("proje_id");
+                    mesaj.personelId=rs.getInt("personel_id");
+                    mesaj.timestamp=rs.getString("timestamp");
+                    mesaj.mesaj=rs.getString("mesaj");
+                    mesaj.personelAdi=rs.getString("personel_adi");
+                    projeMesajList.add(mesaj);
+                }
+
+                con.close();
+            }
+            else{
+                Toast.makeText(context,"İnternet Bağlantınızı Kontrol Ediniz",Toast.LENGTH_LONG).show();
+            }
+        }
+        catch(Exception ex){
+
+        }
+        return projeMesajList;
+    }
+
+    public void yeniProjeMesaj(int projeId, String mesaj, int personelId, String timestamp, String personelAdi)
+    {
+        try{
+            Connection con=connectionclass();
+            if(con!=null) {
+                String query="insert into projeMesajlar (proje_id,personel_id,timestamp,mesaj,personel_adi) values ("+projeId+","+personelId+",'"+timestamp+"','"+mesaj+"','"+personelAdi+"')";
+                PreparedStatement stmt=con.prepareStatement(query,Statement.RETURN_GENERATED_KEYS);
+                stmt.executeUpdate();
+                ResultSet rs=stmt.getGeneratedKeys();
+                con.close();
+            }
+            else{
+                Toast.makeText(context,"İnternet Bağlantınızı Kontrol Ediniz",Toast.LENGTH_LONG).show();
+            }
+        }
+        catch(Exception ex){
+            Toast.makeText(context,"İnternet Bağlantınızı Kontrol Ediniz",Toast.LENGTH_LONG).show();
+        }
     }
 }

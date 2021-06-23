@@ -95,6 +95,12 @@ public class ProjeBilgiActivity extends AppCompatActivity implements GorevListes
             mStartForResult.launch(intent);
         });
 
+        binding.btnMesajac.setOnClickListener(v -> {
+            Intent intent=new Intent(this,ProjeMesajlarActivity.class);
+            intent.putExtra("projeid",proje.id);
+            mStartForResult.launch(intent);
+        });
+
     }
 
     private void projeYenile() {

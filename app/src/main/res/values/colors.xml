@@ -19,4 +19,5 @@
     <color name="txt_dark_text">#BCBCBC</color>
     <color name="txt_light_text">#1E1E1E</color>
     <color name="sttsBarColor">#0b3e57</color>
+    <color name="transparent">#00FFFFFF</color>
 </resources>
