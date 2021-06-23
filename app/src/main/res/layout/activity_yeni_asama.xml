@@ -45,7 +45,7 @@
                 android:id="@+id/textView4"
                 android:layout_width="wrap_content"
                 android:textColor="?attr/txtColor"
-                android:layout_height="41dp"
+                android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:gravity="center_vertical"
                 android:text="Aşama Bitiş Tarihi: "
@@ -59,9 +59,8 @@
             android:id="@+id/linearLayout2"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="548dp"
             android:orientation="vertical"
-            app:layout_constraintBottom_toTopOf="@+id/btn_olustur"
+            android:weightSum="3"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/linearLayout"
             app:layout_constraintTop_toTopOf="parent">
@@ -70,10 +69,7 @@
                 android:id="@+id/txt_asamadi"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:ems="10"
-                tools:layout_editor_absoluteX="138dp"
-                tools:layout_editor_absoluteY="14dp" />
+                android:layout_weight="1" />
 
             <EditText
                 android:id="@+id/txt_baslangictarihi"
@@ -81,10 +77,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:editable="false"
-                android:ems="10"
-                android:focusable="false"
-                tools:layout_editor_absoluteX="138dp"
-                tools:layout_editor_absoluteY="14dp" />
+                android:focusable="false" />
 
             <EditText
                 android:id="@+id/txt_bitistarihi"
@@ -92,10 +85,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:editable="false"
-                android:ems="10"
-                android:focusable="false"
-                tools:layout_editor_absoluteX="138dp"
-                tools:layout_editor_absoluteY="14dp" />
+                android:focusable="false" />
 
 
         </LinearLayout>

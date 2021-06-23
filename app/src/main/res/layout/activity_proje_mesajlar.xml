@@ -33,6 +33,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:hint="Mesaj Giriniz"
+        android:layout_marginLeft="5dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/btn_gonder"
         app:layout_constraintStart_toStartOf="parent" />
@@ -43,6 +44,7 @@
         android:layout_height="wrap_content"
         android:text="Gönder"
         android:backgroundTint="?attr/buttonBg"
+        android:layout_marginRight="5dp"
         android:textColor="?attr/buttonText"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />

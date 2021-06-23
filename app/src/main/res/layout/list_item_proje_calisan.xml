@@ -42,7 +42,7 @@
                         android:id="@+id/txt_isim"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@{personel.ad}"
+                        android:text="@{personel.ad+` `}"
                         android:textSize="15sp"
                         />
 

@@ -24,7 +24,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:background="?attr/cardViewBg"
             android:gravity="center">
 
         </LinearLayout>
@@ -32,8 +31,8 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@color/black"
             android:paddingLeft="10dp"
+            android:background="?attr/cardViewBg"
             android:paddingTop="5dp"
             android:paddingRight="10dp"
             android:paddingBottom="5dp">
